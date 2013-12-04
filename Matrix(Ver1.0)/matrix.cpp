@@ -4,11 +4,9 @@ matrix::matrix() {
 	char* _mark="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/*-+~!@#$%^&*()'_=\[];',./{}|:<>?"; 
 	mark = new char[strlen(_mark)+1];
 	strcpy(mark,_mark);
-	
+
 	Pos.X = 0;
 	Pos.Y = 0;
-	done = false;
-	ptr = this;
 	dis = 0;
 }
 
@@ -16,6 +14,7 @@ matrix::matrix() {
 void matrix::setPos(int _x,int _y) {
 	_x<=0?Pos.X=0:Pos.X=_x-1;
 	_y<=0?Pos.Y=0:Pos.Y=_y-1;
+
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
 	putchar('X');
 	cout<<endl;
@@ -51,59 +50,16 @@ void matrix::rand_pickup_pos() {
 }
 
 
-matrix::~matrix() {
-	delete[] mark;
-}
-
 void matrix::draw_vert() {
 	Pos.Y+=1;
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
 	putchar(rand_pickup_char());
 }
 
-void matrix::draw_delete() {
-	//delete first char
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
-	putchar(' '); 
-	
-	Pos.Y-=1; // reposition		
+
+matrix::~matrix() {
+	delete[] mark;
 }
 
-bool matrix::return_done() const {
-	return done;
-}
 
-matrix* matrix::return_ptr(){
-	return ptr;
-}
 
-int matrix::return_dis() const {
-	return dis;
-}
-
-/*srand((unsigned)time(NULL));
-	int random=rand()%50;
-	Pos.X+=random;
-
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
-	putchar(rand_pickup_char()); 	
-	
-	Pos.Y+=1;
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
-	putchar(rand_pickup_char()); 
-		
-	Pos.Y-=1;
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
-	putchar(' '); 
-	
-	for(int i=0;i<23;i++) {
-		Pos.Y+=2;
-		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
-		putchar(rand_pickup_char());
-		Sleep(200);
-		Pos.Y-=1;
-		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
-		putchar(' ');
-		Sleep(100);
-	
-	}*/
