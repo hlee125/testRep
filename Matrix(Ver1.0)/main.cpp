@@ -1,6 +1,5 @@
 #include <iostream>
 #include <conio.h> // kbhit()
-
 #include "text.h"
 #include "matrix.h"
 using namespace FuckU;
@@ -25,7 +24,7 @@ int main() {
 			
 			m[i++].draw_vert();
 			Sleep(SPEED);	
-			if(kbhit() && getch()==ESC) exit(-1);
+			if(kbhit() && getch()==ESC) exit(-1); // good example to exit
 		}
 	}while(true);
 	
