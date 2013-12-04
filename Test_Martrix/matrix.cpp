@@ -1,58 +1,114 @@
 #include "matrix.h"
 
 matrix::matrix() {
-	char _mark[100]="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	char _mark[100]="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"; // strlen->62
 	mark = new char[strlen(_mark)+1];
 	strcpy(mark,_mark);
-	Pos.X=0;
-	Pos.Y=0;
+	
+	Pos.X = 0;
+	Pos.Y = 0;
+	done = false;
+
+	srand((unsigned)time(NULL));
+	dis = rand()%(MAX_LENGTH-1); // pick up randomly size of distance
 }
+
 
 void matrix::setPos(int _x,int _y) {
 	_x<=0?Pos.X=0:Pos.X=_x-1;
 	_y<=0?Pos.Y=0:Pos.Y=_y-1;
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
+	putchar('X');
+	cout<<endl;
 }
 
-char matrix::pickup_char() {
+
+char matrix::rand_pickup_char() {
 	srand((unsigned)time(NULL));
-	return mark[rand()%62];
+	return mark[rand()%(strlen(mark)-1)];
 }
 
-void matrix::pickup_col() {
+
+void matrix::rand_pickup_pos() {
+	unsigned int rand_x = 0;
+	unsigned int rand_y = 0;
+	
 	srand((unsigned)time(NULL));
+	rand_x = rand()%(MAX_WIDTH-1);
+
+	srand((unsigned)time(NULL));
+	rand_y = rand()%(MAX_LENGTH-1);
+
+	Pos.X+=rand_x;
+	Pos.Y+=rand_y; 
+
+	// decide size of distance
+	if ( dis + Pos.Y >= MAX_LENGTH ) { 
+		if ( dis >= Pos.Y ) { 
+			dis = MAX_LENGTH - Pos.Y ; 
+		} else {
+			dis = Pos.Y - MAX_LENGTH;
+		}
+	} 
+
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
+	putchar(rand_pickup_char());
+	cout<<endl;
+}
+
+
+matrix::~matrix() {
+	delete[] mark;
+}
+
+void matrix::draw_vert() {
+	for(int i=0;i<dis;i++) {
+		Pos.Y+=1;
+		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
+		putchar(rand_pickup_char());
+		Sleep(200);
+	}
+	done = true;
+}
+
+void matrix::draw_delete() {
+	if(done) {
+		//delete first char
+		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
+		putchar(' '); 
+		
+		for(int i=0;i<dis;i++) {
+			Pos.Y-=1;
+			SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
+			putchar(' ');
+			Sleep(50);
+		}
+	}
+}
+
+/*srand((unsigned)time(NULL));
 	int random=rand()%50;
 	Pos.X+=random;
 
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
-	putchar(pickup_char()); //printf("%d",Pos.Y);	
+	putchar(rand_pickup_char()); 	
 	
 	Pos.Y+=1;
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
-	putchar(pickup_char()); //printf("%d",Pos.Y);
+	putchar(rand_pickup_char()); 
 		
 	Pos.Y-=1;
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
-	putchar(' '); //printf("%d",Pos.Y);
+	putchar(' '); 
 	
 	for(int i=0;i<23;i++) {
 		Pos.Y+=2;
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
-		putchar(pickup_char());// printf("%d",Pos.Y);
+		putchar(rand_pickup_char());
 		Sleep(200);
 		Pos.Y-=1;
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
 		putchar(' ');
 		Sleep(100);
 	
-	}
-}
-
-void matrix::setClear() {
-	Pos.X=0;
-	Pos.Y=0;
-}
-
-matrix::~matrix() {
-	delete[] mark;
-}
+	}*/
