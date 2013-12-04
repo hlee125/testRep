@@ -16,13 +16,18 @@ class matrix {
 	bool done;		   // check draw_vert() or not 
 	unsigned int dis;  // how long the size -> shouldn't be 0
 	COORD Pos;
+	matrix* ptr;
 public:
 	matrix();
-	void setPos(int _x,int _y); // for test
+	void setPos(int _x=0,int _y=0); // for test
 	char rand_pickup_char();	// randomly pick up one char
 	void rand_pickup_pos();		// randomly pick up one position
 	void draw_vert();
 	void draw_delete();
+
+	bool return_done() const;
+	int return_dis() const;
+	matrix* return_ptr(); // return self address
 	~matrix();
 };
 

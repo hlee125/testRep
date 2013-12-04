@@ -1,7 +1,7 @@
 #include "matrix.h"
 
 matrix::matrix() {
-	char _mark[100]="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"; // strlen->62
+	char* _mark="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"; // strlen->62
 	mark = new char[strlen(_mark)+1];
 	strcpy(mark,_mark);
 	
@@ -10,7 +10,9 @@ matrix::matrix() {
 	done = false;
 
 	srand((unsigned)time(NULL));
-	dis = rand()%(MAX_LENGTH-1); // pick up randomly size of distance
+	dis = rand()%9; // pick up randomly size of distance //fix it
+
+	ptr = this;
 }
 
 
@@ -43,17 +45,17 @@ void matrix::rand_pickup_pos() {
 	Pos.Y+=rand_y; 
 
 	// decide size of distance
+	/*
 	if ( dis + Pos.Y >= MAX_LENGTH ) { 
 		if ( dis >= Pos.Y ) { 
 			dis = MAX_LENGTH - Pos.Y ; 
 		} else {
 			dis = Pos.Y - MAX_LENGTH;
 		}
-	} 
+	} */
 
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
 	putchar(rand_pickup_char());
-	cout<<endl;
 }
 
 
@@ -62,28 +64,31 @@ matrix::~matrix() {
 }
 
 void matrix::draw_vert() {
-	for(int i=0;i<dis;i++) {
-		Pos.Y+=1;
-		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
-		putchar(rand_pickup_char());
-		Sleep(200);
-	}
-	done = true;
+	Pos.Y+=1;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
+	putchar(rand_pickup_char());
+	Sleep(200);
 }
 
 void matrix::draw_delete() {
-	if(done) {
-		//delete first char
-		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
-		putchar(' '); 
-		
-		for(int i=0;i<dis;i++) {
-			Pos.Y-=1;
-			SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
-			putchar(' ');
-			Sleep(50);
-		}
-	}
+	//delete first char
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
+	putchar(' '); 
+	Sleep(50);	
+	
+	Pos.Y-=1; // reposition		
+}
+
+bool matrix::return_done() const {
+	return done;
+}
+
+matrix* matrix::return_ptr(){
+	return ptr;
+}
+
+int matrix::return_dis() const {
+	return dis;
 }
 
 /*srand((unsigned)time(NULL));

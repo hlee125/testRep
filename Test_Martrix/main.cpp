@@ -2,24 +2,23 @@
 #include <iostream>
 #include <conio.h>
 
+#define SIZE 2
+
 int main() {
-	matrix m[10];
-
-	//m.rand_pickup_pos(); 
-	//m.draw_vert();
-	//m.draw_delete();
-
-	m[0].rand_pickup_pos();
-	m[0].draw_vert();
-	m[0].draw_delete();
-
-	m[1].rand_pickup_pos();
-	m[1].draw_vert();
-	m[1].draw_delete();
-
-	m[2].rand_pickup_pos();
-	m[2].draw_vert();
-	m[2].draw_delete();
+	matrix m[SIZE];
 	
+	for(int i=0;i<SIZE;i++) {
+		m[i].rand_pickup_pos();
+	}
+	
+	for(int i=0;i<10;i++) {
+		m[i].draw_vert();
+	}
+
+	for(int i=0;i<10;i++) {
+		m[i].draw_delete();
+	}
+
 	return 0;
 }
+// probelm is distance take gabage value
