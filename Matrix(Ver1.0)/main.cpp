@@ -13,30 +13,30 @@ int main() {
 	for(int i=0;i<SIZE;i++) {
 		srand((unsigned)GetTickCount());
 		set_color(rand()%COLOR_SIZE,0); // background color 0 is BLACK
-		
+
 		m[i].rand_pickup_pos();
 		Sleep(SPEED);
 	}
 
 	do{
-		for(int i=0;i<SIZE;) {
+		for(int i=0;i<SIZE;i++) {
 			srand((unsigned)GetTickCount());
 			set_color(rand()%COLOR_SIZE,0);	
 			
-			if(m[i].return_pos_y() == DEAD_LINE) {
+			if((kbhit() && getch()!=ESC) || (m[i].return_pos_y() == DEAD_LINE) ){
 				system("cls"); 
-				
+
 				for(int i=0;i<SIZE;i++) {
 					srand((unsigned)GetTickCount());
 					set_color(rand()%COLOR_SIZE,0); // background color 0 is BLACK
 					
-					m[i].clear_pos();		// set position (0,0) all elements 
-					m[i].rand_pickup_pos(); // re positioning
+					m[i].clear_pos();				// set position (0,0) all elements 
+					m[i].rand_pickup_pos();			// re positioning
 					Sleep(SPEED);
 				}
 			}
 
-			m[i++].draw_vert();
+			m[i].draw_vert();
 			Sleep(SPEED);
 			if(kbhit() && getch()==ESC) exit(-1); // good example to exit
 		}
