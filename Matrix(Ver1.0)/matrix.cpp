@@ -11,17 +11,14 @@ namespace FuckU {
 
 		Pos.X = 0;
 		Pos.Y = 0;
-		dis = 0;
 	}
 
 
-	void matrix::setPos(int _x,int _y) {
+	void matrix::clear_pos(int _x,int _y) {
 		_x<=0?Pos.X=0:Pos.X=_x-1;
 		_y<=0?Pos.Y=0:Pos.Y=_y-1;
 
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
-		putchar('X');
-		cout<<endl;
 	}
 
 
@@ -44,11 +41,6 @@ namespace FuckU {
 		Pos.X+=rand_x;
 		Pos.Y+=rand_y; 
 
-		//redirection of distance 
-		if(dis + Pos.Y >= MAX_LENGTH) {
-			dis -= dis + Pos.Y -  MAX_LENGTH;
-		}
-
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
 		putchar(rand_pickup_char());
 	}
@@ -61,10 +53,13 @@ namespace FuckU {
 	}
 
 
+	int matrix::return_pos_y() const {
+		return Pos.Y;
+	}
+
 	matrix::~matrix() {
 		delete[] mark;
 	}
-
 }
 
 
