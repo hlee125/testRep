@@ -10,7 +10,6 @@
 
 class pass_wd : public start_wd {
 	start_wd s;			// need to draw subwindow
-	//char* passwd_val;	// input password value
 	char* label;		// input string into sub window box 
 	char* passwd_label; // input string into window box "PASSWORD" 
 	char* blank;		// input string [_________] into window box 
@@ -26,10 +25,11 @@ public:
 		(COLOR_TYPE fgcolor = DEFAULT_FONT_COLOR,COLOR_TYPE bgcolor = BLACK); // setting font color
 
 	void input_passwd();
+	void message_print(const bool _same, int _failed);  // print message last line at (0,25)
+	
 	//void login_sucess();
 	//void login_fail();
-	
-	bool return_same() const;
+
 	virtual ~pass_wd();
 };
 

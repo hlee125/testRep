@@ -12,6 +12,7 @@ using namespace std;
 #define MAX_WIDTH 80  // windows donsole 80*25
 #define DEFAULT_MARK '*'
 #define SPEED 0.1
+#define ESC 27 // to exit
 
 class start_wd {
 	char* mark;

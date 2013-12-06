@@ -29,8 +29,10 @@ int main() {
 	window.write_label("Log-in");
 	window.write_label_passwd("PASSWORD :");
 	window.write_label_blank("[________________]");
+	
+	window.input_passwd();
 
-	window.setpos(0,25); // goto last line
+	//window.setpos(0,25); // goto last line
 
 	system("pause");
 	return 0;
