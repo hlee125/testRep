@@ -58,8 +58,10 @@ void pass_wd::input_passwd() {
 
 	for(;;){
 		temp_passwd = new char[20];
-		s.setpos(33,13); // position [x__________]
-		for(int i=0;i<15;i++) putchar('_');
+		
+		s.setpos(33,13);	// position [x__________]
+		for(int i=0;i<16;i++) putchar('_'); // delete as '_'
+		
 		s.setpos(33,13);
 		cin.getline(temp_passwd,strlen(temp_passwd),'\n');
 
@@ -85,12 +87,16 @@ void pass_wd::input_passwd() {
 
 void pass_wd::message_print(const bool _same,int _failed) {
 	setpos(0,25);	  // go last line
+	for(int i=0;i<MAX_WIDTH;i++) putchar(' '); // delete previous sentence
+
+	setpos(0,25);	 // reposition
 	set_color(YELLOW,RED);
+
 	if(_same==true) {
 		cout<<"Sucess Mother fucker ";
-	} else if (_failed == 4 ) {
+	} else if (_failed == CHANCE - 1 ) {
 		cout<<"You have only one chance";
-	} else if (_failed == 5 ) {
+	} else if (_failed == CHANCE ) {
 		cout<<"You fucked Mother fucker";
 		exit(-1);
 	} else {

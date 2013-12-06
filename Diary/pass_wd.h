@@ -7,6 +7,7 @@
 #include <conio.h>   // getch();
 
 #define PASSWD "fuckyou"
+#define CHANCE 5
 
 class pass_wd : public start_wd {
 	start_wd s;			// need to draw subwindow
