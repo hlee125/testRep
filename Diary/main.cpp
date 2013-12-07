@@ -1,6 +1,7 @@
+// main.cpp
+
 #include "start_wd.h"
-#include "pass_wd.h"
-#include <conio.h>
+#include "comm_wd.h"
 
 int main() {
 	// (0,0) 80*25
@@ -9,19 +10,54 @@ int main() {
 	unsigned int cur_pos_x=0;
 	unsigned int cur_pos_y=0;
 	
-	start_wd window;
+	commd_wd windows;
+	int i=0;
 
 	// starting window smaller effect
 	for(;;) {
-		window.set_pos(cur_pos_x++,cur_pos_y++); 
-		window.draw_rect(console_width--,console_height--); 
-		window.delete_rect_inside(); 
+		windows.set_pos(cur_pos_x++,cur_pos_y++); 
+		windows.draw_rect(console_width--,console_height--); 
+		windows.delete_rect_inside(); 
 
-		if((window.return_cur_x()+1 >= console_width)||(window.return_cur_y()+1 >= console_height)) break;
+		if((windows.return_cur_x()+1 >= console_width)||(windows.return_cur_y()+1 >= console_height)) break;
 		system("cls");
 	}
-	// (12,12) 69*14
+	system("cls");
 
+	windows.goto_commd_wd("Passwd? ");
+	do {
+		windows.input_passwd();
+		windows.commd_wd_delete();
+		
+		if(windows.check_passwd()) {
+			windows.goto_commd_wd("Sucess! ");
+			windows.commd_wd_delete();
+			break;
+		} 
+		else if (i==CHANCE-1) {
+			windows.goto_commd_wd("Last!! ");
+			windows.commd_wd_delete();
+
+		}
+		else {
+			windows.goto_commd_wd("Failed! ");
+			windows.commd_wd_delete();
+		}
+		
+	}while(i++<CHANCE);
+	
+	
+	/*
+	if(window.check_passwd()) {
+		window.comm_wd_delete();
+		window.goto_comm_wd("Sucess");
+	} else {
+		window.comm_wd_delete();
+		window.goto_comm_wd("failed");
+	}*/
+
+
+	// (12,12) 69*14
 	// fix starting window (9,9) 72*17
 	//window.clear_pos();
 	//window.set_pos(10,10);

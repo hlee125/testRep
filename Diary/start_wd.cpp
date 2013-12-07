@@ -51,7 +51,7 @@ void start_wd::delete_rect_inside() {
 			Sleep(SPEED);
 		}
 		count++;
-		gotoxy(cur_x,cur_y+count); 
+		gotoxy(cur_x,cur_y+count); // goto next line 
 		Sleep(SPEED);
 	}while(count<rect_height-index-1); 
 }

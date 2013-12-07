@@ -6,14 +6,11 @@
 #include "text_color.h"
 #include <Windows.h>
 #include <iostream>
-#include <conio.h>
-
 using namespace std;
 
 #define MAX_LENGTH 25
 #define MAX_WIDTH 80  // windows donsole 80*25
 #define SPEED 0.5
-#define ESC 27 // to exit
 
 class start_wd {
 	unsigned int cur_x;			// current cursor position X
