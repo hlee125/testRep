@@ -6,16 +6,16 @@
 #include "text_color.h"
 #include <Windows.h>
 #include <iostream>
+#include <conio.h>
+
 using namespace std;
 
 #define MAX_LENGTH 25
 #define MAX_WIDTH 80  // windows donsole 80*25
-#define DEFAULT_MARK '*'
-#define SPEED 0.1
+#define SPEED 0.5
 #define ESC 27 // to exit
 
 class start_wd {
-	char* mark;
 	unsigned int cur_x;			// current cursor position X
 	unsigned int cur_y;			// current cursor position Y
 	unsigned int rect_width;	
@@ -23,14 +23,15 @@ class start_wd {
 	unsigned int index;			// needs to smaller size effect
 public:
 	start_wd();
-	void setpos(unsigned int _x=0,unsigned int _y=0); 
-	void draw_rect(unsigned int _width=0, unsigned int _height=0,const bool mark_select=false); 
-								// if true, draw as '*'
+	void set_pos (unsigned int _x=0,unsigned int _y=0); 
+	void draw_rect (unsigned const int _width=0, unsigned const int _height=0); 
 	void delete_rect_inside(); 
+	void clear_pos();
 
-	char return_char() const;	// pick up random one char
 	int return_cur_x() const;
 	int return_cur_y() const;
+	int return_rect_width() const;
+	int return_rect_height() const;
 	virtual ~start_wd();
 };
 

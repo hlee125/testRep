@@ -3,43 +3,36 @@
 #include "start_wd.h"
 
 start_wd::start_wd() {
-	char* _mark="*/-+~!@#$%^&*()'_=\[];',./{}|:<>?0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
-	mark = new char[strlen(_mark)+1];
-	strcpy(mark,_mark);
-
 	rect_width = 0;
 	rect_height = 0;
+	
+	index = 0;
 	cur_x = 0;
 	cur_y = 0;
-	index = 0;
 }
 
 
-void start_wd::setpos(unsigned int _x,unsigned int _y) {
+void start_wd::set_pos(unsigned int _x,unsigned int _y) {
 	cur_x=_x;
 	cur_y=_y;
-
 	gotoxy(cur_x,cur_y);
 }
 
 
-void start_wd::draw_rect(unsigned int _width,unsigned int _height,const bool mark_select) {
+void start_wd::draw_rect(unsigned const int _width,unsigned int _height) { 
 	int count=0;
 	rect_width=_width;
 	rect_height=_height;
 	
 	do {
-		for(int i=0;i<rect_width-index;i++) {
-			set_color(RANDOM_COLOR_EXCLUDE_BLACK,0); // don't use color black
-			if(mark_select)  {
-				putchar(DEFAULT_MARK);
-			} else {
-				putchar(return_char());
-			}
-			Sleep(SPEED);		   // each char print putchar() and setcolor(), depends on number of SPEED
+		for(int i=0;i<rect_width-index;i++) { 
+			set_color(DEFAULT_FONT_COLOR,DEFAULT_BG_COLOR); // draw bgcolor
+			putchar(' ');	
+			Sleep(SPEED);
 		}
 		count++;
-		gotoxy(cur_x,cur_y+count); // goto next line
+		gotoxy(cur_x,cur_y+count); // goto next line 
+		Sleep(SPEED);
 	}while(count<rect_height-index);
 	index++;
 }
@@ -47,23 +40,26 @@ void start_wd::draw_rect(unsigned int _width,unsigned int _height,const bool mar
 
 void start_wd::delete_rect_inside() {
 	int count=0;
-	cur_x++; // goto into inside Coord X
-	cur_y++; // goto into inside Coord Y
-	gotoxy(cur_x,cur_y);
+	cur_x++;
+	cur_y++; 
+	gotoxy(cur_x,cur_y); // goto inside (x+1,y+1)
 
 	do {
 		for(int i=0;i<rect_width-index-1;i++) {
+			set_color(DEFAULT_FONT_COLOR,BLACK); // delete bgcolor as BLACK
 			putchar(' ');
+			Sleep(SPEED);
 		}
 		count++;
-		gotoxy(cur_x,cur_y+count); // goto next line
-	}while(count<rect_height-index-1);
+		gotoxy(cur_x,cur_y+count); 
+		Sleep(SPEED);
+	}while(count<rect_height-index-1); 
 }
 
 
-char start_wd::return_char() const {
-	srand((unsigned)GetTickCount());
-	return mark[rand()%(strlen(mark)-1)];
+void start_wd::clear_pos() {
+	cur_x=0;
+	cur_y=0;
 }
 
 
@@ -77,9 +73,20 @@ int start_wd::return_cur_y() const {
 }
 
 
-start_wd::~start_wd() {
-	delete[] mark;
+int start_wd::return_rect_width() const {
+	return rect_width;
 }
+
+
+int start_wd::return_rect_height() const {
+	return rect_height;
+}
+
+
+start_wd::~start_wd() {
+
+}
+
 
 void gotoxy(unsigned int _x,unsigned int _y) {
 	COORD Pos;
@@ -87,3 +94,4 @@ void gotoxy(unsigned int _x,unsigned int _y) {
 	Pos.Y=_y;
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
 }
+

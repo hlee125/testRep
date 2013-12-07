@@ -9,8 +9,8 @@ pass_wd::pass_wd() {
 
 
 void pass_wd::draw_window (unsigned int cur_x,unsigned int cur_y,unsigned int rect_width,unsigned int rect_height){
-	s.setpos(cur_x,cur_y);
-	s.draw_rect(rect_width,rect_height,true);
+	s.set_pos(cur_x,cur_y);
+	s.draw_rect(rect_width,rect_height);
 	s.delete_rect_inside();
 }
 
@@ -23,7 +23,7 @@ void pass_wd::write_label(const char* _label) {
 	int temp_cur_x=s.return_cur_x();
 	int temp_cur_y=s.return_cur_y();
 
-	s.setpos(temp_cur_x+=8,temp_cur_y+=1); //"Log-in" at (37,8) in subwindow
+	s.set_pos(temp_cur_x+=8,temp_cur_y+=1); //"Log-in" at (37,8) in subwindow
 	cout<<label<<endl;
 }
 
@@ -33,7 +33,7 @@ void pass_wd::write_label_passwd(const char* _passwd_label) {
 	passwd_label = new char[strlen(_passwd_label)+1];
 	strcpy(passwd_label,_passwd_label);
 
-	s.setpos(20,13); // "PASSWORD" at (20,13)
+	s.set_pos(20,13); // "PASSWORD" at (20,13)
 	cout<<passwd_label<<endl;
 }
 
@@ -43,7 +43,7 @@ void pass_wd::write_label_blank(const char* _blank) {
 	blank = new char[strlen(_blank)+1];
 	strcpy(blank,_blank);
 
-	s.setpos(32,13); // [__________] at (32,13)
+	s.set_pos(32,13); // [__________] at (32,13)
 	cout<<blank<<endl;
 }
 
@@ -59,10 +59,10 @@ void pass_wd::input_passwd() {
 	for(;;){
 		temp_passwd = new char[20];
 		
-		s.setpos(33,13);	// position [x__________]
+		s.set_pos(33,13);	// position [x__________]
 		for(int i=0;i<16;i++) putchar('_'); // delete as '_'
 		
-		s.setpos(33,13);
+		s.set_pos(33,13);
 		cin.getline(temp_passwd,strlen(temp_passwd),'\n');
 
 		for(int i=0;i<strlen(temp_passwd);i++) {
@@ -86,10 +86,10 @@ void pass_wd::input_passwd() {
 // need to block til faled and exception 3 times
 
 void pass_wd::message_print(const bool _same,int _failed) {
-	setpos(0,25);	  // go last line
+	set_pos(0,25);	  // go last line
 	for(int i=0;i<MAX_WIDTH;i++) putchar(' '); // delete previous sentence
 
-	setpos(0,25);	 // reposition
+	set_pos(0,25);	 // reposition
 	set_color(YELLOW,RED);
 
 	if(_same==true) {
