@@ -5,7 +5,6 @@
 
 #include <Windows.h>
 
-
 #define RANDOM_COLOR_INCLUDE_BLACK rand()%16
 #define RANDOM_COLOR_EXCLUDE_BLACK rand()%15+1
 

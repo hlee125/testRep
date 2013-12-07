@@ -23,30 +23,34 @@ int main() {
 		system("cls");
 	}
 	system("cls");
-
+	
+	// input passwd
 	windows.goto_commd_wd("Passwd? ");
 	do {
 		windows.input_passwd();
 		windows.commd_wd_delete();
 		
-		if(windows.check_passwd()) {
+		if(windows.check_passwd()) { 
 			windows.goto_commd_wd("Sucess! ");
 			windows.commd_wd_delete();
 			break;
 		} 
 		else if (i==CHANCE-1) {
-			windows.goto_commd_wd("Last!! ");
+			windows.goto_commd_wd("Last!   ");
 			windows.commd_wd_delete();
-
+		}
+		else if (i==CHANCE) {
+			windows.goto_commd_wd("Exit!   ");
+			windows.commd_wd_delete();
 		}
 		else {
 			windows.goto_commd_wd("Failed! ");
 			windows.commd_wd_delete();
 		}
-		
 	}while(i++<CHANCE);
 	
-	
+	cout<<"] ";
+
 	/*
 	if(window.check_passwd()) {
 		window.comm_wd_delete();
@@ -72,7 +76,8 @@ int main() {
 	
 	//window.input_passwd();
 
-	//window.setpos(0,25); // goto last line
+	// goto last line
+	
 	system("pause");
 	return 0;
 }
