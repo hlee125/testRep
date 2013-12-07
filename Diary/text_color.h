@@ -5,9 +5,6 @@
 
 #include <Windows.h>
 
-#define RANDOM_COLOR_INCLUDE_BLACK rand()%16
-#define RANDOM_COLOR_EXCLUDE_BLACK rand()%15+1
-
 #define DEFAULT_BG_COLOR	     DARK_CYAN
 #define DEFAULT_FONT_COLOR		 WHITE
 #define DEFAULT_INPUT_FONT_COLOR DARK_WHITE

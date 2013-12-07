@@ -12,6 +12,7 @@ start_wd::start_wd() {
 }
 
 
+
 void start_wd::set_pos(unsigned int _x,unsigned int _y) {
 	cur_x=_x;
 	cur_y=_y;

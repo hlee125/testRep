@@ -25,6 +25,4 @@ public:
 	virtual ~commd_wd();
 };
 
-
-
 #endif
