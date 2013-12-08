@@ -1,4 +1,4 @@
-// text_color.h
+// text_clr.h
 
 #ifndef _TEXT_COLOR_H
 #define _TEXT_COLOR_H

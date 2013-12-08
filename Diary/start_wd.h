@@ -3,7 +3,7 @@
 #ifndef _START_WD_H_
 #define _START_WD_H_
 
-#include "text_color.h"
+#include "text_clr.h"
 #include <Windows.h>
 #include <iostream>
 using namespace std;
@@ -21,7 +21,7 @@ class start_wd {
 public:
 	start_wd();
 	void set_pos (unsigned int _x=0,unsigned int _y=0); 
-	void draw_rect (unsigned const int _width=0, unsigned const int _height=0); 
+	void draw_rect (unsigned const int _width=0, unsigned const int _height=0); // draw rectangle width * height
 	void delete_rect_inside(); 
 	void clear_pos();
 

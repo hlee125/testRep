@@ -1,6 +1,6 @@
-// text_color.cpp
+// text_clr.cpp
 
-#include "text_color.h"
+#include "text_clr.h"
 
 void set_color(int color, int bgcolor) {		// color range 0~15
 	color &= 0xf;
