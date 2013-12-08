@@ -6,6 +6,7 @@ commd_wd::commd_wd() {
 	print_label = new char; 
 	print_blank = new char; 
 	same = false;
+
 }
 
 void commd_wd::goto_commd_wd_label(const char* _print_label) {
@@ -29,8 +30,10 @@ void commd_wd::goto_commd_wd_blank(const char* _print_blank) {
 void commd_wd::input_passwd(){	   
 	//set_color(DEFAULT_INPUT_FONT_COLOR,DEFAULT_INPUT_BG_COLOR); // setcolor
 	set_color(DEFAULT_INPUT_FONT_COLOR,RED);
+
 	int count=0;
 	char temp_passwd[PASSWORD_SIZE];
+
 	gotoxy(0+strlen(print_label)+1,25);	// +1 to input [X______]	
 
 	do {
@@ -44,7 +47,7 @@ void commd_wd::input_passwd(){
 			system("pause");
 			exit(-1);
 		}
-		
+
 		count++;
 	} while(count<PASSWORD_SIZE);
 
@@ -68,6 +71,7 @@ bool commd_wd::check_passwd() {
 	if(count == strlen(PASSWORD)) return true;
 	else return false;
 }
+
 
 commd_wd::~commd_wd() {
 	delete[] print_blank;

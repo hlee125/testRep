@@ -28,19 +28,21 @@ int main() {
 	}
 	system("cls"); 	//(12,12) 69*14
 
+
 	// setting for exit window (11,11) 57*2
 	unsigned int temp_cur_x=start_window.return_cur_x()-1;
 	unsigned int temp_cur_y=start_window.return_cur_y()-1;
 	unsigned int temp_width=start_window.return_rect_width()-count;
 	unsigned int temp_height=start_window.return_rect_height()-count;
 	
+
 	// input passwd
 	start_window.goto_commd_wd_label("Passwd? ");
 	start_window.goto_commd_wd_blank("[_______]");
 	do {
 		start_window.input_passwd();
 		start_window.commd_wd_delete();
-		
+
 		if(start_window.check_passwd()) { 
 			start_window.goto_commd_wd_label("Sucess! ");
 			start_window.commd_wd_delete();
@@ -50,10 +52,9 @@ int main() {
 			start_window.goto_commd_wd_label("Last!   ");
 			start_window.commd_wd_delete();
 		}
-		else if (failed==CHANCE) {
+		else if (failed==CHANCE ) {
 			start_window.goto_commd_wd_label("Exit!   ");
 			start_window.commd_wd_delete();
-
 			//starting window bigger effect
 			for(;;) {
 				exit_window.set_pos(temp_cur_x--,temp_cur_y--); 
