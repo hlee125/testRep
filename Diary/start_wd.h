@@ -10,7 +10,7 @@ using namespace std;
 
 #define MAX_LENGTH 25
 #define MAX_WIDTH 80  // windows donsole 80*25
-#define SPEED 0.5
+#define SPEED 0.1
 
 class start_wd {
 	unsigned int cur_x;			// current cursor position X
@@ -20,8 +20,9 @@ class start_wd {
 	unsigned int index;			// needs to smaller size effect
 public:
 	start_wd();
-	void set_pos (unsigned int _x=0,unsigned int _y=0); 
-	void draw_rect (unsigned const int _width=0, unsigned const int _height=0); // draw rectangle width * height
+	void set_pos(unsigned int _x=0,unsigned int _y=0); 
+	void draw_rect(unsigned const int _width=0, unsigned const int _height=0); // draw rectangle width * height
+	void draw_reverse(unsigned const int _width=0, unsigned const int _height=0);
 	void delete_rect_inside(); 
 	void clear_pos();
 

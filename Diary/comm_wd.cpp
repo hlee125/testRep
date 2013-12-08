@@ -3,6 +3,8 @@
 #include "comm_wd.h"
 
 commd_wd::commd_wd() {
+	print_label = new char; 
+	print_blank = new char; 
 	same = false;
 }
 

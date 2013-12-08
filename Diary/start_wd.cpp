@@ -38,6 +38,24 @@ void start_wd::draw_rect(unsigned const int _width,unsigned int _height) {
 }
 
 
+void start_wd::draw_reverse(unsigned const int _width,unsigned int _height) { 
+	int count=0;
+	rect_width=_width;
+	rect_height=_height;
+	
+	do {
+		for(int i=0;i<rect_width+1;i++) { 
+			set_color(DEFAULT_FONT_COLOR,DEFAULT_BG_COLOR); // draw bgcolor
+			putchar(' ');	
+			Sleep(SPEED);
+		}
+		count++;
+		gotoxy(cur_x,cur_y+count); // goto next line 
+		Sleep(SPEED);
+	}while(count<rect_height+1);
+}
+
+
 void start_wd::delete_rect_inside() {
 	int count=0;
 	cur_x++;
