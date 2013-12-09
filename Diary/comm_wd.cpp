@@ -36,10 +36,12 @@ void commd_wd::input_passwd(){
 
 	do {
 		temp_passwd[count]=getch();
-		cout<<'*';
+
+		// when gets ESC, print nothing 
+		if(temp_passwd[count]!=ESC) cout<<'*';
 		
 		//when gets ESC 
-		if(temp_passwd[count]==ESC) { 	
+		if(temp_passwd[count]==ESC) { 
 			set_color(DEFAULT_FONT_COLOR,BLACK); // delete color
 			goto_commd_wd_label("Exit!   ");
 
