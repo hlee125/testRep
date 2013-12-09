@@ -8,6 +8,7 @@
 
 #define CHANCE  5
 #define PASSWORD	  "fuckyou"
+#define MATRIX		  "matrix"
 #define PASSWORD_SIZE  7 // strlen(fuckyou)
 
 #define EXIT_WD_CUR_X 11
@@ -20,7 +21,6 @@ class commd_wd : public start_wd {
 	char* print_label; 
 	char* print_blank;
 	char passwd_val[PASSWORD_SIZE];
-	bool same;
 public:
 	commd_wd();
 	void goto_commd_wd_label(const char* _print_label=""); // goto Last line at (0,25) print string
@@ -29,6 +29,7 @@ public:
 
 	void input_passwd();
 	bool check_passwd();
+	bool check_matrix();
 	virtual ~commd_wd();
 };
 

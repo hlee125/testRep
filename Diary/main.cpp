@@ -48,6 +48,12 @@ int main() {
 			start_window.commd_wd_delete();
 			break;
 		} 
+		else if(start_window.check_matrix()) {
+			start_window.goto_commd_wd_label("Matrix! ");
+			start_window.commd_wd_delete();
+			system("pause");
+			break;
+		}
 		else if (failed==CHANCE-1) {
 			start_window.goto_commd_wd_label("Last!   ");
 			start_window.commd_wd_delete();

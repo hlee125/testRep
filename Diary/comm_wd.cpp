@@ -5,7 +5,6 @@
 commd_wd::commd_wd() {
 	print_label = new char; 
 	print_blank = new char; 
-	same = false;
 }
 
 void commd_wd::goto_commd_wd_label(const char* _print_label) {
@@ -39,8 +38,8 @@ void commd_wd::input_passwd(){
 
 		// when gets ESC, print nothing 
 		if(temp_passwd[count]!=ESC) cout<<'*';
-		
-		//when gets ESC 
+
+		// when gets ESC 
 		if(temp_passwd[count]==ESC) { 
 			set_color(DEFAULT_FONT_COLOR,BLACK); // delete color
 			goto_commd_wd_label("Exit!   ");
@@ -86,6 +85,22 @@ bool commd_wd::check_passwd() {
 	}
 
 	if(count == strlen(PASSWORD)) return true;
+	else return false;
+}
+
+
+bool commd_wd::check_matrix() {
+	int count=0;
+	int check_white_space=0;
+
+	for(int i=0;i<PASSWORD_SIZE;i++) {
+		if(passwd_val[i]==MATRIX[i]) count++;
+	}
+
+	//check last char as ENTER or SPACE
+	if(passwd_val[count]==ENTER || passwd_val[count]==SPACE ) check_white_space++;
+
+	if(count+check_white_space == strlen(PASSWORD)) return true;
 	else return false;
 }
 
