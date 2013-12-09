@@ -3,7 +3,6 @@
 #ifndef _COMMD_WD_H_
 #define _COMMD_WD_H_
 
-#include "key.h"
 #include "start_wd.h"
 #include <conio.h>
 
@@ -11,7 +10,13 @@
 #define PASSWORD	  "fuckyou"
 #define PASSWORD_SIZE  7 // strlen(fuckyou)
 
+#define EXIT_WD_CUR_X 11
+#define EXIT_WD_CUR_Y 11
+#define EXIT_WD_WIDTH 57
+#define EXIT_WD_HEIGHT 2
+
 class commd_wd : public start_wd {
+	start_wd exit_window; // to draw exit_window
 	char* print_label; 
 	char* print_blank;
 	char passwd_val[PASSWORD_SIZE];

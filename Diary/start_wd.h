@@ -3,6 +3,7 @@
 #ifndef _START_WD_H_
 #define _START_WD_H_
 
+#include "key.h"
 #include "text_clr.h"
 #include <Windows.h>
 #include <iostream>
@@ -10,7 +11,6 @@ using namespace std;
 
 #define MAX_LENGTH 25
 #define MAX_WIDTH 80  // windows donsole 80*25
-#define SPEED 0.1
 
 class start_wd {
 	unsigned int cur_x;			// current cursor position X
