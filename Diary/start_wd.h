@@ -9,6 +9,7 @@
 #include <iostream>
 using namespace std;
 
+#define LAST_LINE 25
 #define MAX_LENGTH 25
 #define MAX_WIDTH 80  // windows donsole 80*25
 
@@ -17,7 +18,7 @@ class start_wd {
 	unsigned int cur_y;			// current cursor position Y
 	unsigned int rect_width;	
 	unsigned int rect_height;
-	unsigned int index;			// needs to smaller size effect
+	unsigned int index;			// needs to only smaller size effect
 public:
 	start_wd();
 	void set_pos(unsigned int _x=0,unsigned int _y=0); 

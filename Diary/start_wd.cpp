@@ -15,6 +15,7 @@ start_wd::start_wd() {
 void start_wd::set_pos(unsigned int _x,unsigned int _y) {
 	cur_x=_x;
 	cur_y=_y;
+
 	gotoxy(cur_x,cur_y);
 }
 
@@ -110,6 +111,7 @@ void gotoxy(unsigned int _x,unsigned int _y) {
 	COORD Pos;
 	Pos.X=_x;
 	Pos.Y=_y;
+	
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
 }
 

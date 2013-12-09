@@ -10,8 +10,8 @@ int main() {
 	unsigned int cur_pos_x=0;
 	unsigned int cur_pos_y=0;
 
-	start_wd exit_window;
-	commd_wd start_window;
+	start_wd exit_window;  // using beigger impact for exit window
+	commd_wd start_window; // using smaller impact then console passwd
 	int count=0;
 	int failed=0;
 
@@ -55,6 +55,7 @@ int main() {
 		else if (failed==CHANCE ) {
 			start_window.goto_commd_wd_label("Exit!   ");
 			start_window.commd_wd_delete();
+
 			//starting window bigger effect
 			for(;;) {
 				exit_window.set_pos(temp_cur_x--,temp_cur_y--); 
@@ -69,6 +70,7 @@ int main() {
 			start_window.goto_commd_wd_label("Failed! ");
 			start_window.commd_wd_delete();
 		}
+		//end if
 	}while(failed++<CHANCE);
 
 	system("cls"); 

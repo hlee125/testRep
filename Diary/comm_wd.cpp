@@ -6,14 +6,13 @@ commd_wd::commd_wd() {
 	print_label = new char; 
 	print_blank = new char; 
 	same = false;
-
 }
 
 void commd_wd::goto_commd_wd_label(const char* _print_label) {
 	print_label = new char[strlen(_print_label)+1];
 	strcpy(print_label,_print_label);
 
-	gotoxy(0,25); 
+	gotoxy(0,LAST_LINE); 
 	cout<<print_label; // print "Passwd?"		
 }
 
@@ -22,7 +21,7 @@ void commd_wd::goto_commd_wd_blank(const char* _print_blank) {
 	print_blank = new char[strlen(_print_blank)+1];
 	strcpy(print_blank,_print_blank);
 
-	gotoxy(0+strlen(print_label),25); 
+	gotoxy(0+strlen(print_label),LAST_LINE); 
 	cout<<print_blank;
 }
 
@@ -33,13 +32,13 @@ void commd_wd::input_passwd(){
 	char temp_passwd[PASSWORD_SIZE];
 	int count=0;
 
-	gotoxy(0+strlen(print_label)+1,25);	// +1 to input [X______]	
-		
+	gotoxy(0+strlen(print_label)+1,LAST_LINE);	// +1 to input [X______]	
+
 	do {
 		temp_passwd[count]=getch();
 		cout<<'*';
 		
-		//when get ESC exit program
+		//when gets ESC 
 		if(temp_passwd[count]==ESC) { 	
 			set_color(DEFAULT_FONT_COLOR,BLACK); // delete color
 			goto_commd_wd_label("Exit!   ");
@@ -50,6 +49,7 @@ void commd_wd::input_passwd(){
 			unsigned int temp_height=EXIT_WD_HEIGHT;
 			//(11,11) 57*2
 
+			//staring beigger effect 
 			for(;;) {
 				exit_window.set_pos(temp_cur_x--,temp_cur_y--);
 				exit_window.draw_reverse(temp_width+=2,temp_height+=2);
@@ -58,6 +58,9 @@ void commd_wd::input_passwd(){
 
 				if(exit_window.return_cur_x() == 2 || exit_window.return_cur_y() == 2 ) break; 
 			}
+			//exit program
+			system("cls"); 
+			system("pause");
 			exit(-1);
 		}
 		count++;
@@ -68,9 +71,9 @@ void commd_wd::input_passwd(){
 }
 
 void commd_wd::commd_wd_delete() {
-	gotoxy(0+strlen(print_label)+1,25);				// [X______]
+	gotoxy(0+strlen(print_label)+1,LAST_LINE);				// [X______]
 	for(int i=0;i<PASSWORD_SIZE;i++) putchar('_');  // delete * as ' '
-	gotoxy(0+strlen(print_label)+1,25);				// reposition [X______]
+	gotoxy(0+strlen(print_label)+1,LAST_LINE);				// reposition [X______]
 }
 
 bool commd_wd::check_passwd() {
