@@ -51,8 +51,18 @@ int main() {
 		else if(start_window.check_matrix()) {
 			start_window.goto_commd_wd_label("Matrix! ");
 			start_window.commd_wd_delete();
+			start_window.set_pos(PASSWORD_SIZE+1,LAST_LINE);
+			
 			system("pause");
-			break;
+			system("cls");
+			//starting matrix impact
+			
+
+			//
+
+			failed=0;
+			start_window.goto_commd_wd_label("Passwd? ");
+			start_window.goto_commd_wd_blank("[_______]");
 		}
 		else if (failed==CHANCE-1) {
 			start_window.goto_commd_wd_label("Last!   ");
