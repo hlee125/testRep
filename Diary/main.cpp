@@ -1,7 +1,7 @@
 // main.cpp
 
 #include "start_wd.h"
-#include "comm_wd.h"
+#include "pass_wd.h"
 
 int main() {
 	// (0,0) 80*25
@@ -11,7 +11,7 @@ int main() {
 	unsigned int cur_pos_y=0;
 
 	start_wd exit_window;  // using beigger impact for exit window
-	commd_wd start_window; // using smaller impact then console passwd
+	pass_wd start_window; // using smaller impact then console passwd
 	int count=0;
 	int failed=0;
 
@@ -60,9 +60,9 @@ int main() {
 
 			//
 
-			failed=0;
 			start_window.goto_commd_wd_label("Passwd? ");
 			start_window.goto_commd_wd_blank("[_______]");
+			failed=0;
 		}
 		else if (failed==CHANCE-1) {
 			start_window.goto_commd_wd_label("Last!   ");

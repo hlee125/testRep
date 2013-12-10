@@ -1,13 +1,13 @@
-// comm_wd.cpp
+// pass_wd.cpp
 
-#include "comm_wd.h"
+#include "pass_wd.h"
 
-commd_wd::commd_wd() {
+pass_wd::pass_wd() {
 	print_label = new char; 
 	print_blank = new char; 
 }
 
-void commd_wd::goto_commd_wd_label(const char* _print_label) {
+void pass_wd::goto_commd_wd_label(const char* _print_label) {
 	print_label = new char[strlen(_print_label)+1];
 	strcpy(print_label,_print_label);
 
@@ -16,7 +16,7 @@ void commd_wd::goto_commd_wd_label(const char* _print_label) {
 }
 
 
-void commd_wd::goto_commd_wd_blank(const char* _print_blank) {
+void pass_wd::goto_commd_wd_blank(const char* _print_blank) {
 	print_blank = new char[strlen(_print_blank)+1];
 	strcpy(print_blank,_print_blank);
 
@@ -25,7 +25,7 @@ void commd_wd::goto_commd_wd_blank(const char* _print_blank) {
 }
 
 
-void commd_wd::input_passwd(){	   
+void pass_wd::input_passwd(){	   
 	set_color(DEFAULT_INPUT_FONT_COLOR,DEFAULT_INPUT_BG_COLOR); // setcolor
 
 	char temp_passwd[PASSWORD_SIZE];
@@ -71,13 +71,13 @@ void commd_wd::input_passwd(){
 	set_color(DEFAULT_FONT_COLOR,BLACK); // delete color
 }
 
-void commd_wd::commd_wd_delete() {
+void pass_wd::commd_wd_delete() {
 	gotoxy(0+strlen(print_label)+1,LAST_LINE);				// [X______]
 	for(int i=0;i<PASSWORD_SIZE;i++) putchar('_');  // delete * as ' '
 	gotoxy(0+strlen(print_label)+1,LAST_LINE);				// reposition [X______]
 }
 
-bool commd_wd::check_passwd() {
+bool pass_wd::check_passwd() {
 	int count=0;
 
 	for(int i=0;i<PASSWORD_SIZE;i++) {
@@ -89,7 +89,7 @@ bool commd_wd::check_passwd() {
 }
 
 
-bool commd_wd::check_matrix() {
+bool pass_wd::check_matrix() {
 	int count=0;
 	int check_white_space=0;
 
@@ -105,7 +105,7 @@ bool commd_wd::check_matrix() {
 }
 
 
-commd_wd::~commd_wd() {
+pass_wd::~pass_wd() {
 	delete[] print_blank;
 	delete[] print_label;
 }

@@ -1,4 +1,4 @@
-// commd_wd.h
+// pass_wd.h
 
 #ifndef _COMMD_WD_H_
 #define _COMMD_WD_H_
@@ -16,13 +16,13 @@
 #define EXIT_WD_WIDTH 57
 #define EXIT_WD_HEIGHT 2
 
-class commd_wd : public start_wd {
+class pass_wd : public start_wd {
 	start_wd exit_window; // to draw exit_window
 	char* print_label; 
 	char* print_blank;
 	char passwd_val[PASSWORD_SIZE];
 public:
-	commd_wd();
+	pass_wd();
 	void goto_commd_wd_label(const char* _print_label=""); // goto Last line at (0,25) print string
 	void goto_commd_wd_blank(const char* _print_blank="");
 	void commd_wd_delete();
@@ -30,7 +30,7 @@ public:
 	void input_passwd();
 	bool check_passwd();
 	bool check_matrix();
-	virtual ~commd_wd();
+	virtual ~pass_wd();
 };
 
 #endif
