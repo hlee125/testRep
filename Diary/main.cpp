@@ -41,7 +41,6 @@ int main() {
 	start_window.goto_commd_wd_blank("[_______]");
 	do {
 		start_window.input_passwd();
-		start_window.commd_wd_delete();
 
 		if(start_window.check_passwd()) { 
 			start_window.goto_commd_wd_label("Sucess! ");
@@ -55,6 +54,7 @@ int main() {
 			
 			system("pause");
 			system("cls");
+
 			//starting matrix impact
 			
 
@@ -68,7 +68,7 @@ int main() {
 			start_window.goto_commd_wd_label("Last!   ");
 			start_window.commd_wd_delete();
 		}
-		else if (failed==CHANCE ) {
+		else if (failed==CHANCE) {
 			start_window.goto_commd_wd_label("Exit!   ");
 			start_window.commd_wd_delete();
 
@@ -81,6 +81,10 @@ int main() {
 
 				if(exit_window.return_cur_x() == 2 || exit_window.return_cur_y() == 2 ) break; 
 			}
+		}
+		else if (start_window.check_clear()) {
+			start_window.goto_commd_wd_label("Sure?   ");
+			start_window.commd_wd_delete();
 		}
 		else {
 			start_window.goto_commd_wd_label("Failed! ");

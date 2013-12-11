@@ -30,6 +30,7 @@ public:
 	void input_passwd();
 	bool check_passwd();
 	bool check_matrix();
+	bool check_clear();
 	virtual ~pass_wd();
 };
 

@@ -38,9 +38,9 @@ void pass_wd::input_passwd(){
 
 		// when gets ESC, print nothing 
 		if(temp_passwd[count]!=ESC) cout<<'*';
-
-		// when gets ESC 
-		if(temp_passwd[count]==ESC) { 
+		
+		// when gets ESC, at first char then exit program
+		if(temp_passwd[0]==ESC) { 
 			set_color(DEFAULT_FONT_COLOR,BLACK); // delete color
 			goto_commd_wd_label("Exit!   ");
 
@@ -63,6 +63,14 @@ void pass_wd::input_passwd(){
 			system("cls"); 
 			system("pause");
 			exit(-1);
+		}
+
+		// when gets ESC, delete buffer 
+		if(temp_passwd[count]==ESC) {
+			for(int i=0;i<PASSWORD_SIZE;i++) {
+				temp_passwd[i]=(char)NULL;
+			}
+			break;
 		}
 		count++;
 	} while(count<PASSWORD_SIZE);
@@ -104,6 +112,11 @@ bool pass_wd::check_matrix() {
 	else return false;
 }
 
+bool pass_wd::check_clear() {
+
+	if(passwd_val[0]==char(NULL)) return true;
+	else return false;
+}
 
 pass_wd::~pass_wd() {
 	delete[] print_blank;
