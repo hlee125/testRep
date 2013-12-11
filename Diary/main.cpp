@@ -45,13 +45,17 @@ int main() {
 		if(start_window.check_passwd()) { 
 			start_window.goto_commd_wd_label("Sucess! ");
 			start_window.commd_wd_delete();
-			break;
+			
+			start_window.set_pos(PASSWORD_SIZE+1,LAST_LINE);
+			system("pause");
+
+			//startnig sucess impact
 		} 
 		else if(start_window.check_matrix()) {
 			start_window.goto_commd_wd_label("Matrix! ");
 			start_window.commd_wd_delete();
-			start_window.set_pos(PASSWORD_SIZE+1,LAST_LINE);
 			
+			start_window.set_pos(PASSWORD_SIZE+1,LAST_LINE);
 			system("pause");
 			system("cls");
 
