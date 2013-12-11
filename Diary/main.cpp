@@ -11,7 +11,7 @@ int main() {
 	unsigned int cur_pos_y=0;
 
 	start_wd exit_window;  // using beigger impact for exit window
-	pass_wd start_window; // using smaller impact then console passwd
+	pass_wd start_window;  // using smaller impact passwd window
 	int count=0;
 	int failed=0;
 
