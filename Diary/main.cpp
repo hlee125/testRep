@@ -12,8 +12,8 @@ int main() {
 
 	start_wd exit_window;  // using beigger impact for exit window
 	pass_wd start_window;  // using smaller impact passwd window
-	int count=0;
 	int failed=0;
+	int count=0;
 
 	//starting window smaller effect
 	for(;;) {
@@ -21,7 +21,7 @@ int main() {
 		start_window.draw_rect(console_width--,console_height--); 
 		start_window.delete_rect_inside(); 
 		count++;
-		Sleep(10);
+		Sleep(DEFAULT_SPEED);
 
 		if((start_window.return_cur_x()+1 >= console_width)||(start_window.return_cur_y()+1 >= console_height)) break;
 		system("cls"); 
@@ -85,7 +85,7 @@ int main() {
 				exit_window.set_pos(temp_cur_x--,temp_cur_y--); 
 				exit_window.draw_reverse(temp_width+=2,temp_height+=2);
 				exit_window.delete_rect_inside(); 
-				Sleep(10);
+				Sleep(DEFAULT_SPEED);
 
 				if(exit_window.return_cur_x() == 2 || exit_window.return_cur_y() == 2 ) break; 
 			}
@@ -98,7 +98,8 @@ int main() {
 			start_window.goto_commd_wd_label("Failed! ");
 			start_window.commd_wd_delete();
 		}
-		//end if
+		
+	//end if
 	}while(failed++<CHANCE);
 
 	system("cls"); 

@@ -28,11 +28,11 @@ void start_wd::draw_rect(unsigned const int _width,unsigned int _height) {
 		for(int i=0;i<rect_width-index;i++) { 
 			set_color(DEFAULT_FONT_COLOR,DEFAULT_BG_COLOR); // draw bgcolor
 			putchar(' ');	
-			Sleep(SPEED);
+			Sleep(ANI_SPEED);
 		}
 		count++;
 		gotoxy(cur_x,cur_y+count); // goto next line 
-		Sleep(SPEED);
+		Sleep(ANI_SPEED);
 	}while(count<rect_height-index);
 	index++;
 }
@@ -47,11 +47,11 @@ void start_wd::draw_reverse(unsigned const int _width,unsigned int _height) {
 		for(int i=0;i<rect_width+1;i++) { 
 			set_color(DEFAULT_FONT_COLOR,DEFAULT_BG_COLOR); // draw bgcolor
 			putchar(' ');	
-			Sleep(SPEED);
+			Sleep(ANI_SPEED);
 		}
 		count++;
 		gotoxy(cur_x,cur_y+count); // goto next line 
-		Sleep(SPEED);
+		Sleep(ANI_SPEED);
 	}while(count<rect_height+1);
 }
 
@@ -66,11 +66,11 @@ void start_wd::delete_rect_inside() {
 		for(int i=0;i<rect_width-index-1;i++) {
 			set_color(DEFAULT_FONT_COLOR,BLACK); // delete bgcolor as BLACK
 			putchar(' ');
-			Sleep(SPEED);
+			Sleep(ANI_SPEED);
 		}
 		count++;
 		gotoxy(cur_x,cur_y+count); // goto next line 
-		Sleep(SPEED);
+		Sleep(ANI_SPEED);
 	}while(count<rect_height-index-1); 
 }
 
@@ -110,7 +110,6 @@ void gotoxy(unsigned int _x,unsigned int _y) {
 	COORD Pos;
 	Pos.X=_x;
 	Pos.Y=_y;
-	
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
 }
 

@@ -96,7 +96,7 @@ void pass_wd::sucess_ani() {
 			if(j==LAST_LINE-1) sucess[j].set_pos(move,j); cout<<' '; 
 		}while(j<MAX_LENGTH-1);
 		
-		Sleep(MATRIX_SPEED);
+		Sleep(DEFAULT_SPEED);
 	}
 	set_color(DEFAULT_FONT_COLOR,BLACK);  // delete color
 }
