@@ -48,8 +48,9 @@ int main() {
 			system("pause");
 
 			//startnig sucess impact
+			start_window.sucess_ani();
 
-			//
+
 			break;
 		} 
 		else if(start_window.check_matrix()) {

@@ -19,7 +19,6 @@ void start_wd::set_pos(unsigned int _x,unsigned int _y) {
 	gotoxy(cur_x,cur_y);
 }
 
-
 void start_wd::draw_rect(unsigned const int _width,unsigned int _height) { 
 	int count=0;
 	rect_width=_width;

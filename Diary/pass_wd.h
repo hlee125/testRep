@@ -9,6 +9,7 @@
 
 #define CHANCE		   5
 #define PASSWORD_SIZE  7 // strlen(fuckyou)
+
 #define PASSWORD	  "fuckyou"
 #define MATRIX		  "matrix"
 
@@ -18,8 +19,9 @@
 #define EXIT_WD_HEIGHT 2
 
 class pass_wd : public start_wd {
-	matrix m[MATRIX_SIZE]; // for matrix animation
-	start_wd exit_window;  // to draw exit_window
+	matrix m[MATRIX_SIZE];	     // for matrix animation
+	start_wd exit_window;		 // to draw exit_window
+	start_wd sucess[MAX_LENGTH]; // to draw sucess ani
 	char* print_label; 
 	char* print_blank;
 	char passwd_val[PASSWORD_SIZE];
@@ -33,6 +35,9 @@ public:
 	void matrix_pos();
 	void matrix_pos_clear();
 	void matrix_draw();
+
+	// sucess effect
+	void sucess_ani();
 
 	void input_passwd();
 	bool check_passwd();

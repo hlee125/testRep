@@ -26,6 +26,13 @@ void pass_wd::goto_commd_wd_blank(const char* _print_blank) {
 }
 
 
+void pass_wd::commd_wd_delete() {
+	gotoxy(0+strlen(print_label)+1,LAST_LINE);		// [X______]
+	for(int i=0;i<PASSWORD_SIZE;i++) putchar('_');  // delete * as ' '
+	gotoxy(0+strlen(print_label)+1,LAST_LINE);		// reposition [X______]
+}
+
+
 void pass_wd::matrix_pos() {
 
 	for(int i=0;i<MATRIX_SIZE;i++) {
@@ -71,6 +78,27 @@ void pass_wd::matrix_draw() {
 	}while(esc_checker==false);
 
 	set_color(DEFAULT_FONT_COLOR,BLACK); // delete color
+}
+
+
+void pass_wd::sucess_ani() {
+	set_color(DEFAULT_FONT_COLOR,DARK_CYAN); // setting color
+
+	int move = 0;
+	int del  = MAX_WIDTH;
+
+	for(int i=0;i<MAX_WIDTH;i++,move++,del--) {
+		int j=0;
+
+		do{
+			sucess[j].set_pos(move,j++); cout<<' '; 
+			sucess[j].set_pos(del, j++); cout<<' '; 
+			if(j==LAST_LINE-1) sucess[j].set_pos(move,j); cout<<' '; 
+		}while(j<MAX_LENGTH-1);
+		
+		Sleep(MATRIX_SPEED);
+	}
+	set_color(DEFAULT_FONT_COLOR,BLACK);  // delete color
 }
 
 
@@ -127,13 +155,6 @@ void pass_wd::input_passwd(){
 	
 	strcpy(passwd_val,temp_passwd);
 	set_color(DEFAULT_FONT_COLOR,BLACK); // delete color
-}
-
-
-void pass_wd::commd_wd_delete() {
-	gotoxy(0+strlen(print_label)+1,LAST_LINE);	// [X______]
-	for(int i=0;i<PASSWORD_SIZE;i++) putchar('_');  // delete * as ' '
-	gotoxy(0+strlen(print_label)+1,LAST_LINE);				// reposition [X______]
 }
 
 
