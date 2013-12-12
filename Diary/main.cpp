@@ -35,14 +35,14 @@ int main() {
 	unsigned int temp_height=start_window.return_rect_height()-count;
 	
 	// input passwd
-	start_window.goto_commd_wd_label("Passwd? ");
-	start_window.goto_commd_wd_blank("[_______]");
+	start_window.goto_pass_wd_label("Passwd? ");
+	start_window.goto_pass_wd_blank("[_______]");
 	do {
 		start_window.input_passwd();
 
 		if(start_window.check_passwd()) { 
-			start_window.goto_commd_wd_label("Sucess! ");
-			start_window.commd_wd_delete();
+			start_window.goto_pass_wd_label("Sucess! ");
+			start_window.pass_wd_delete();
 			
 			start_window.set_pos(PASSWORD_SIZE+1,LAST_LINE);
 			system("pause");
@@ -54,8 +54,8 @@ int main() {
 			break;
 		} 
 		else if(start_window.check_matrix()) {
-			start_window.goto_commd_wd_label("Matrix! ");
-			start_window.commd_wd_delete();
+			start_window.goto_pass_wd_label("Matrix! ");
+			start_window.pass_wd_delete();
 			
 			start_window.set_pos(PASSWORD_SIZE+1,LAST_LINE);
 			system("pause");
@@ -68,17 +68,17 @@ int main() {
 			system("cls");
 			//end of matrix animation
 
-			start_window.goto_commd_wd_label("Passwd? ");
-			start_window.goto_commd_wd_blank("[_______]");
+			start_window.goto_pass_wd_label("Passwd? ");
+			start_window.goto_pass_wd_blank("[_______]");
 			failed=0;
 		}
 		else if (failed==CHANCE-1) {
-			start_window.goto_commd_wd_label("Last!   ");
-			start_window.commd_wd_delete();
+			start_window.goto_pass_wd_label("Last!   ");
+			start_window.pass_wd_delete();
 		}
 		else if (failed==CHANCE) {
-			start_window.goto_commd_wd_label("Exit!   ");
-			start_window.commd_wd_delete();
+			start_window.goto_pass_wd_label("Exit!   ");
+			start_window.pass_wd_delete();
 
 			//starting window bigger effect
 			for(;;) {
@@ -91,12 +91,12 @@ int main() {
 			}
 		}
 		else if (start_window.check_clear()) {
-			start_window.goto_commd_wd_label("Sure?   ");
-			start_window.commd_wd_delete();
+			start_window.goto_pass_wd_label("Sure?   ");
+			start_window.pass_wd_delete();
 		}
 		else {
-			start_window.goto_commd_wd_label("Failed! ");
-			start_window.commd_wd_delete();
+			start_window.goto_pass_wd_label("Failed! ");
+			start_window.pass_wd_delete();
 		}
 		
 	//end if
