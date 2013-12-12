@@ -7,6 +7,7 @@ pass_wd::pass_wd() {
 	print_blank = new char; 
 }
 
+
 void pass_wd::goto_commd_wd_label(const char* _print_label) {
 	print_label = new char[strlen(_print_label)+1];
 	strcpy(print_label,_print_label);
@@ -25,7 +26,56 @@ void pass_wd::goto_commd_wd_blank(const char* _print_blank) {
 }
 
 
+void pass_wd::matrix_pos() {
+
+	for(int i=0;i<MATRIX_SIZE;i++) {
+		srand((unsigned)GetTickCount());
+		set_color_matrix(MATRIX_COLOR,BLACK); // setting color for matrix
+
+		m[i].rand_pickup_pos();
+		Sleep(MATRIX_SPEED);
+	}
+}
+	
+
+void pass_wd::matrix_pos_clear(){
+
+	for(int i=0;i<MATRIX_SIZE;i++) {
+		m[i].clear_pos();		
+	}
+}
+
+
+void pass_wd::matrix_draw() {
+	bool esc_checker=false;
+
+	do{
+		for(int i=0;i<MATRIX_SIZE;i++) {
+			srand((unsigned)GetTickCount());
+			set_color_matrix(MATRIX_COLOR,BLACK);
+			
+			if(kbhit() && getch()==ESC) {
+				esc_checker=true;	
+				break; 
+			}
+			
+			if((kbhit() && getch()!=ESC) || (m[i].return_pos_y() == MATRIX_DEAD_LINE) ){
+				system("cls"); 
+				matrix_pos_clear();
+				matrix_pos();
+			}
+
+			m[i].draw_vert();
+			Sleep(MATRIX_SPEED);
+		}
+	}while(esc_checker==false);
+
+	set_color(DEFAULT_FONT_COLOR,BLACK); // delete color
+}
+
+
 void pass_wd::input_passwd(){	   
+
 	set_color(DEFAULT_INPUT_FONT_COLOR,DEFAULT_INPUT_BG_COLOR); // setcolor
 
 	char temp_passwd[PASSWORD_SIZE];
@@ -79,11 +129,13 @@ void pass_wd::input_passwd(){
 	set_color(DEFAULT_FONT_COLOR,BLACK); // delete color
 }
 
+
 void pass_wd::commd_wd_delete() {
-	gotoxy(0+strlen(print_label)+1,LAST_LINE);				// [X______]
+	gotoxy(0+strlen(print_label)+1,LAST_LINE);	// [X______]
 	for(int i=0;i<PASSWORD_SIZE;i++) putchar('_');  // delete * as ' '
 	gotoxy(0+strlen(print_label)+1,LAST_LINE);				// reposition [X______]
 }
+
 
 bool pass_wd::check_passwd() {
 	int count=0;
@@ -112,11 +164,13 @@ bool pass_wd::check_matrix() {
 	else return false;
 }
 
+
 bool pass_wd::check_clear() {
 
 	if(passwd_val[0]==char(NULL)) return true;
 	else return false;
 }
+
 
 pass_wd::~pass_wd() {
 	delete[] print_blank;

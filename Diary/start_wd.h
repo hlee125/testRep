@@ -9,10 +9,6 @@
 #include <iostream>
 using namespace std;
 
-#define LAST_LINE 25
-#define MAX_LENGTH 25
-#define MAX_WIDTH 80  // windows donsole 80*25
-
 class start_wd {
 	unsigned int cur_x;			// current cursor position X
 	unsigned int cur_y;			// current cursor position Y

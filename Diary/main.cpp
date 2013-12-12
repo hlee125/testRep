@@ -28,14 +28,12 @@ int main() {
 	}
 	system("cls"); 	//(12,12) 69*14
 
-
 	// setting for exit window (11,11) 57*2
 	unsigned int temp_cur_x=start_window.return_cur_x()-1;
 	unsigned int temp_cur_y=start_window.return_cur_y()-1;
 	unsigned int temp_width=start_window.return_rect_width()-count;
 	unsigned int temp_height=start_window.return_rect_height()-count;
 	
-
 	// input passwd
 	start_window.goto_commd_wd_label("Passwd? ");
 	start_window.goto_commd_wd_blank("[_______]");
@@ -50,6 +48,9 @@ int main() {
 			system("pause");
 
 			//startnig sucess impact
+
+			//
+			break;
 		} 
 		else if(start_window.check_matrix()) {
 			start_window.goto_commd_wd_label("Matrix! ");
@@ -59,10 +60,12 @@ int main() {
 			system("pause");
 			system("cls");
 
-			//starting matrix impact
-			
-
-			//
+			//starting matrix animation
+			start_window.matrix_pos();
+			start_window.matrix_draw();
+			start_window.matrix_pos_clear();
+			system("cls");
+			//end of matrix animation
 
 			start_window.goto_commd_wd_label("Passwd? ");
 			start_window.goto_commd_wd_blank("[_______]");

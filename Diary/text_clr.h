@@ -10,6 +10,8 @@
 #define DEFAULT_INPUT_FONT_COLOR DARK_WHITE
 #define DEFAULT_INPUT_BG_COLOR	 RED
 
+#define MATRIX_COLOR			 rand()%2
+
 typedef enum { // color range 0~15
 	BLACK = 0,
     DARK_BLUE,
@@ -30,5 +32,6 @@ typedef enum { // color range 0~15
 } COLOR_TYPE;
 
 void set_color(int color, int bgcolor);
+void set_color_matrix(int color, int bgcolor);
 
 #endif
