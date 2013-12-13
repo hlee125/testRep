@@ -18,16 +18,16 @@
 #define EXIT_WD_WIDTH 57
 #define EXIT_WD_HEIGHT 2  //(11,11) 57*2
 
-class pass_wd : public start_wd {
-	start_wd sucess[MAX_LENGTH]; // to draw sucess ani
-	matrix m[MATRIX_SIZE];	     // to matrix animation
-	start_wd exit_window;		 // to draw exit_window ani
+class Pass_wd : public Start_wd {
+	Start_wd sucess[MAX_LENGTH]; // to draw sucess ani
+	Matrix m[MATRIX_SIZE];	     // to matrix animation
+	Start_wd exit_window;		 // to draw exit_window ani
 	
 	char* print_label; 
 	char* print_blank;
 	char passwd_val[PASSWORD_SIZE];
 public:
-	pass_wd();
+	Pass_wd();
 	void goto_pass_wd_label(const char* _print_label=""); // goto Last line at (0,25) print string
 	void goto_pass_wd_blank(const char* _print_blank="");
 	void pass_wd_delete();
@@ -44,7 +44,7 @@ public:
 	bool check_passwd();
 	bool check_matrix();
 	bool check_clear();
-	virtual ~pass_wd();
+	virtual ~Pass_wd();
 };
 
 #endif

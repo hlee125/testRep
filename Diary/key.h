@@ -14,8 +14,11 @@
 #define DEFAULT_SPEED	 10
 #define ANI_SPEED		 0.5
 
-#define LAST_LINE  25
+#define LAST_LINE  24
 #define MAX_LENGTH 25
 #define MAX_WIDTH  80 // window console size 80*25
 
 #endif
+
+// color resetting
+// sucess ani

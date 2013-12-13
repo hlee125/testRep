@@ -10,8 +10,8 @@ int main() {
 	unsigned int cur_pos_x=0;
 	unsigned int cur_pos_y=0;
 
-	start_wd exit_window;  // using beigger impact for exit window
-	pass_wd start_window;  // using smaller impact passwd window
+	Start_wd exit_window;  // using beigger impact for exit window
+	Pass_wd start_window;  // using smaller impact passwd window
 	int failed=0;
 	int count=0;
 

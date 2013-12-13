@@ -2,7 +2,7 @@
 
 #include "start_wd.h"
 
-start_wd::start_wd() {
+Start_wd::Start_wd() {
 	rect_width = 0;
 	rect_height = 0;
 	
@@ -12,14 +12,14 @@ start_wd::start_wd() {
 }
 
 
-void start_wd::set_pos(unsigned int _x,unsigned int _y) {
+void Start_wd::set_pos(unsigned int _x,unsigned int _y) {
 	cur_x=_x;
 	cur_y=_y;
 
 	gotoxy(cur_x,cur_y);
 }
 
-void start_wd::draw_rect(unsigned const int _width,unsigned int _height) { 
+void Start_wd::draw_rect(unsigned const int _width,unsigned int _height) { 
 	int count=0;
 	rect_width=_width;
 	rect_height=_height;
@@ -38,7 +38,7 @@ void start_wd::draw_rect(unsigned const int _width,unsigned int _height) {
 }
 
 
-void start_wd::draw_reverse(unsigned const int _width,unsigned int _height) { 
+void Start_wd::draw_reverse(unsigned const int _width,unsigned int _height) { 
 	int count=0;
 	rect_width=_width;
 	rect_height=_height;
@@ -56,7 +56,7 @@ void start_wd::draw_reverse(unsigned const int _width,unsigned int _height) {
 }
 
 
-void start_wd::delete_rect_inside() {
+void Start_wd::delete_rect_inside() {
 	int count=0;
 	cur_x++;
 	cur_y++; 
@@ -75,33 +75,33 @@ void start_wd::delete_rect_inside() {
 }
 
 
-void start_wd::clear_pos() {
+void Start_wd::clear_pos() {
 	cur_x=0;
 	cur_y=0;
 }
 
 
-int start_wd::return_cur_x() const {
+int Start_wd::return_cur_x() const {
 	return cur_x;
 }
 
 
-int start_wd::return_cur_y() const {
+int Start_wd::return_cur_y() const {
 	return cur_y;
 }
 
 
-int start_wd::return_rect_width() const {
+int Start_wd::return_rect_width() const {
 	return rect_width;
 }
 
 
-int start_wd::return_rect_height() const {
+int Start_wd::return_rect_height() const {
 	return rect_height;
 }
 
 
-start_wd::~start_wd() {
+Start_wd::~Start_wd() {
 
 }
 

@@ -2,13 +2,13 @@
 
 #include "pass_wd.h"
 
-pass_wd::pass_wd() {
+Pass_wd::Pass_wd() {
 	print_label = new char; 
 	print_blank = new char; 
 }
 
 
-void pass_wd::goto_pass_wd_label(const char* _print_label) {
+void Pass_wd::goto_pass_wd_label(const char* _print_label) {
 	print_label = new char[strlen(_print_label)+1];
 	strcpy(print_label,_print_label);
 
@@ -17,7 +17,7 @@ void pass_wd::goto_pass_wd_label(const char* _print_label) {
 }
 
 
-void pass_wd::goto_pass_wd_blank(const char* _print_blank) {
+void Pass_wd::goto_pass_wd_blank(const char* _print_blank) {
 	print_blank = new char[strlen(_print_blank)+1];
 	strcpy(print_blank,_print_blank);
 
@@ -26,14 +26,14 @@ void pass_wd::goto_pass_wd_blank(const char* _print_blank) {
 }
 
 
-void pass_wd::pass_wd_delete() {
+void Pass_wd::pass_wd_delete() {
 	gotoxy(0+strlen(print_label)+1,LAST_LINE);		// [X______]
 	for(int i=0;i<PASSWORD_SIZE;i++) putchar('_');  // delete * as ' '
 	gotoxy(0+strlen(print_label)+1,LAST_LINE);		// reposition [X______]
 }
 
 
-void pass_wd::matrix_pos() {
+void Pass_wd::matrix_pos() {
 
 	for(int i=0;i<MATRIX_SIZE;i++) {
 		srand((unsigned)GetTickCount());
@@ -45,7 +45,7 @@ void pass_wd::matrix_pos() {
 }
 	
 
-void pass_wd::matrix_pos_clear(){
+void Pass_wd::matrix_pos_clear(){
 
 	for(int i=0;i<MATRIX_SIZE;i++) {
 		m[i].clear_pos();		
@@ -53,7 +53,7 @@ void pass_wd::matrix_pos_clear(){
 }
 
 
-void pass_wd::matrix_draw() {
+void Pass_wd::matrix_draw() {
 	bool esc_checker=false;
 
 	do{
@@ -81,7 +81,7 @@ void pass_wd::matrix_draw() {
 }
 
 
-void pass_wd::sucess_ani() {
+void Pass_wd::sucess_ani() {
 	set_color(DEFAULT_FONT_COLOR,DARK_CYAN); // setting color
 
 	int move = 0;
@@ -102,7 +102,7 @@ void pass_wd::sucess_ani() {
 }
 
 
-void pass_wd::input_passwd(){	   
+void Pass_wd::input_passwd(){	   
 
 	set_color(DEFAULT_INPUT_FONT_COLOR,DEFAULT_INPUT_BG_COLOR); // setcolor
 
@@ -158,7 +158,7 @@ void pass_wd::input_passwd(){
 }
 
 
-bool pass_wd::check_passwd() {
+bool Pass_wd::check_passwd() {
 	int count=0;
 
 	for(int i=0;i<PASSWORD_SIZE;i++) {
@@ -170,7 +170,7 @@ bool pass_wd::check_passwd() {
 }
 
 
-bool pass_wd::check_matrix() {
+bool Pass_wd::check_matrix() {
 	int count=0;
 	int check_white_space=0;
 
@@ -186,14 +186,14 @@ bool pass_wd::check_matrix() {
 }
 
 
-bool pass_wd::check_clear() {
+bool Pass_wd::check_clear() {
 
 	if(passwd_val[0]==char(NULL)) return true;
 	else return false;
 }
 
 
-pass_wd::~pass_wd() {
+Pass_wd::~Pass_wd() {
 	delete[] print_blank;
 	delete[] print_label;
 }

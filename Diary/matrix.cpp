@@ -2,7 +2,7 @@
 
 #include "matrix.h"
 
-matrix::matrix() {
+Matrix::Matrix() {
 	char* _mark="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ /*-+~!@#$%^&*()'_=\[];',./{}|:<>?"; 
 	mark = new char[strlen(_mark)+1];
 	strcpy(mark,_mark);
@@ -12,20 +12,20 @@ matrix::matrix() {
 }
 
 
-void matrix::clear_pos(int _x,int _y) {
+void Matrix::clear_pos(int _x,int _y) {
 	_x<=0?Pos.X=0:Pos.X=_x-1;
 	_y<=0?Pos.Y=0:Pos.Y=_y-1;
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
 }
 
 
-char matrix::rand_pickup_char() {
+char Matrix::rand_pickup_char() {
 	srand((unsigned)GetTickCount());
 	return mark[rand()%(strlen(mark)-1)];
 }
 
 
-void matrix::rand_pickup_pos() {
+void Matrix::rand_pickup_pos() {
 	unsigned int rand_x;
 	unsigned int rand_y;
 	
@@ -43,18 +43,18 @@ void matrix::rand_pickup_pos() {
 }
 
 
-void matrix::draw_vert() {
+void Matrix::draw_vert() {
 	Pos.Y++;
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
 	putchar(rand_pickup_char());
 }
 
 
-int matrix::return_pos_y() const {
+int Matrix::return_pos_y() const {
 	return Pos.Y;
 }
 
-matrix::~matrix() {
+Matrix::~Matrix() {
 	delete[] mark;
 }
 
