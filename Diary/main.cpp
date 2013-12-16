@@ -37,6 +37,7 @@ int main() {
 	// input passwd
 	start_window.goto_pass_wd_label("Passwd? ");
 	start_window.goto_pass_wd_blank("[_______]");
+
 	do {
 		start_window.input_passwd();
 
@@ -81,9 +82,9 @@ int main() {
 			start_window.pass_wd_delete();
 
 			//starting window bigger effect
-			for(;;) {
+			for(;;temp_width+=2,temp_height+=2) {
 				exit_window.set_pos(temp_cur_x--,temp_cur_y--); 
-				exit_window.draw_reverse(temp_width+=2,temp_height+=2);
+				exit_window.draw_reverse(temp_width,temp_height);
 				exit_window.delete_rect_inside(); 
 				Sleep(DEFAULT_SPEED);
 

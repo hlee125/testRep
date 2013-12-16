@@ -16,6 +16,5 @@
 
 #endif
 
-// input color and black sperate
-// exit effect
+
 

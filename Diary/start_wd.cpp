@@ -5,7 +5,7 @@
 Start_wd::Start_wd() {
 	rect_width  = 0;
 	rect_height = 0;
-	
+
 	index = 0;
 	cur_x = 0;
 	cur_y = 0;
@@ -32,7 +32,7 @@ void Start_wd::draw_rect(unsigned const int _width,unsigned int _height) {
 			Sleep(ANI_SPEED);
 		}
 		count++;
-		gotoxy(cur_x,cur_y+count); // goto next line 
+		gotoxy(cur_x,cur_y+count);	// goto next line 
 		Sleep(ANI_SPEED);
 	}while(count<rect_height-index);
 	index++;
@@ -46,8 +46,7 @@ void Start_wd::draw_reverse(unsigned const int _width,unsigned int _height) {
 	rect_height = _height;
 	int count   = 0;
 
-	
-	set_color(ANI_FONT_COLOR,ANI_BG_COLOR); // draw bgcolor
+	set_color(ANI_FONT_COLOR,ANI_BG_COLOR);  // draw bgcolor
 
 	do {
 		for(int i=0;i<rect_width+1;i++) { 
@@ -55,7 +54,7 @@ void Start_wd::draw_reverse(unsigned const int _width,unsigned int _height) {
 			Sleep(ANI_SPEED);
 		}
 		count++;
-		gotoxy(cur_x,cur_y+count); // goto next line 
+		gotoxy(cur_x,cur_y+count);  // goto next line 
 		Sleep(ANI_SPEED);
 	}while(count<rect_height+1);
 
@@ -65,9 +64,7 @@ void Start_wd::draw_reverse(unsigned const int _width,unsigned int _height) {
 
 void Start_wd::delete_rect_inside() {
 	int count=0;
-	cur_x++;
-	cur_y++; 
-	gotoxy(cur_x,cur_y); // goto inside (x+1,y+1)
+	gotoxy(cur_x+=1,cur_y+=1); // goto inside (x+1,y+1)
 
 	set_color(ANI_FONT_COLOR,BLACK); // delete bgcolor as BLACK
 	

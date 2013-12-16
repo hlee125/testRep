@@ -24,14 +24,23 @@ void Pass_wd::goto_pass_wd_blank(const char* _print_blank) {
 	strcpy(print_blank,_print_blank);
 
 	gotoxy(0+strlen(print_label),LAST_LINE); 
-	cout<<print_blank; // print "[_______]"
+
+	set_color(PASSWD_LABEL_FONT_COLOR,PASSWD_LABEL_BG_COLOR);   // setcolor '[' as WHITE 
+	putchar(print_blank[0]);								    // print '['
+	set_color(DEFAULT_FONT_COLOR,DEFAULT_BG_COLOR);			    // delete color
+
+	for(int i=0;i<PASSWORD_SIZE;i++) putchar(print_blank[i+1]); // print "________"
+	
+	set_color(PASSWD_LABEL_FONT_COLOR,PASSWD_LABEL_BG_COLOR);   // setcolor ']' as WHITE 
+	putchar(print_blank[PASSWORD_SIZE+1]);					    // print ']'
+	set_color(DEFAULT_FONT_COLOR,DEFAULT_BG_COLOR);			    // delete color
 }
 
 
 void Pass_wd::pass_wd_delete() {
-	gotoxy(0+strlen(print_label)+1,LAST_LINE);		// [X______]
-	for(int i=0;i<PASSWORD_SIZE;i++) putchar('_');  // delete * to '_'
-	gotoxy(0+strlen(print_label)+1,LAST_LINE);		// reposition [X______]
+	gotoxy(0+strlen(print_label)+1,LAST_LINE);					 // [X______]
+	for(int i=0;i<PASSWORD_SIZE;i++) putchar(print_blank[i+1]);  // delete * to '_'
+	gotoxy(0+strlen(print_label)+1,LAST_LINE);					 // reposition [X______]
 }
 
 
@@ -70,7 +79,7 @@ void Pass_wd::matrix_draw() {
 				break; 
 			}
 			
-			if((kbhit() && getch()!=ESC) || (m[i].return_pos_y() == MATRIX_DEAD_LINE) ){
+			if((kbhit() && getch()!=ESC) || (m[i].return_pos_y() == MATRIX_DEAD_LINE)){
 				system("cls"); 
 				matrix_pos_clear();
 				matrix_pos();
@@ -135,14 +144,14 @@ void Pass_wd::input_passwd(){
 			//(11,11) 57*2
 
 			//staring bigger effect 
-			for(;;) {
+			for(;;temp_width+=2,temp_height+=2) {
 				exit_window.set_pos(temp_cur_x--,temp_cur_y--);
-				exit_window.draw_reverse(temp_width+=2,temp_height+=2);
+				exit_window.draw_reverse(temp_width,temp_height);
 				exit_window.delete_rect_inside(); 
 				Sleep(DEFAULT_SPEED);
-
 				if(exit_window.return_cur_x() == 2 || exit_window.return_cur_y() == 2 ) break; 
 			}
+
 			//exit program
 			system("cls"); 
 			system("pause");

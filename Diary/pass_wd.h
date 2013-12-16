@@ -19,10 +19,9 @@
 #define EXIT_WD_HEIGHT 2  //(11,11) 57*2
 
 class Pass_wd : public Start_wd {
-	Start_wd sucess[MAX_LENGTH]; // to draw sucess ani
-	Start_wd exit_window;		 // to draw exit_window ani
 	Matrix m[MATRIX_SIZE];	     // to matrix animation
-
+	Start_wd exit_window;		 // to draw exit_window ani
+	Start_wd sucess[MAX_LENGTH]; // to draw sucess ani
 	char* print_label; 
 	char* print_blank;
 	char passwd_val[PASSWORD_SIZE];
