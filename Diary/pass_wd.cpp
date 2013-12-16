@@ -208,6 +208,11 @@ bool Pass_wd::check_clear() {
 
 
 Pass_wd::~Pass_wd() {
-	delete[] print_blank;
-	delete[] print_label;
+	if(print_blank!=(char*)NULL) {
+		delete[] print_blank;
+	}
+	if(print_label!=(char*)NULL) {
+		delete[] print_label;
+	}
+
 }
