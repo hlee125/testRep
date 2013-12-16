@@ -10,9 +10,9 @@
 #include <iostream>
 using namespace std;
 
-#define MATRIX_DEAD_LINE 35
-#define MATRIX_SIZE		 150
-#define MATRIX_SPEED	 10
+#define MATRIX_SIZE		  150
+#define MATRIX_SPEED	  10
+#define MATRIX_DEAD_LINE  35
 
 class Matrix {
 	char* mark;

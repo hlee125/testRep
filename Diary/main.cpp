@@ -12,8 +12,8 @@ int main() {
 
 	Start_wd exit_window;  // using beigger impact for exit window
 	Pass_wd start_window;  // using smaller impact passwd window
-	int failed=0;
-	int count=0;
+	int failed = 0;
+	int count  = 0;
 
 	//starting window smaller effect
 	for(;;) {

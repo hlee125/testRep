@@ -87,7 +87,7 @@ void Pass_wd::matrix_draw() {
 
 void Pass_wd::sucess_ani() {
 	int move = 0;
-	int del  = MAX_WIDTH - 1; // -1 to delete last empty blank
+	int del  = MAX_WIDTH - 1;				// -1 to delete last empty blank
 
 	set_color(ANI_FONT_COLOR,ANI_BG_COLOR); // setting color
 
