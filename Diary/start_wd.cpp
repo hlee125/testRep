@@ -3,7 +3,7 @@
 #include "start_wd.h"
 
 Start_wd::Start_wd() {
-	rect_width = 0;
+	rect_width  = 0;
 	rect_height = 0;
 	
 	index = 0;
@@ -20,13 +20,14 @@ void Start_wd::set_pos(unsigned int _x,unsigned int _y) {
 }
 
 void Start_wd::draw_rect(unsigned const int _width,unsigned int _height) { 
-	int count=0;
-	rect_width=_width;
-	rect_height=_height;
+	rect_width  = _width;
+	rect_height = _height;
+	int count   = 0;
 	
+	set_color(ANI_FONT_COLOR,ANI_BG_COLOR); // draw bgcolor
+
 	do {
 		for(int i=0;i<rect_width-index;i++) { 
-			set_color(DEFAULT_FONT_COLOR,DEFAULT_BG_COLOR); // draw bgcolor
 			putchar(' ');	
 			Sleep(ANI_SPEED);
 		}
@@ -35,17 +36,21 @@ void Start_wd::draw_rect(unsigned const int _width,unsigned int _height) {
 		Sleep(ANI_SPEED);
 	}while(count<rect_height-index);
 	index++;
+
+	set_color(DEFAULT_FONT_COLOR,DEFAULT_BG_COLOR); // delete color
 }
 
 
 void Start_wd::draw_reverse(unsigned const int _width,unsigned int _height) { 
-	int count=0;
-	rect_width=_width;
-	rect_height=_height;
+	rect_width  = _width;
+	rect_height = _height;
+	int count   = 0;
+
 	
+	set_color(ANI_FONT_COLOR,ANI_BG_COLOR); // draw bgcolor
+
 	do {
 		for(int i=0;i<rect_width+1;i++) { 
-			set_color(DEFAULT_FONT_COLOR,DEFAULT_BG_COLOR); // draw bgcolor
 			putchar(' ');	
 			Sleep(ANI_SPEED);
 		}
@@ -53,6 +58,8 @@ void Start_wd::draw_reverse(unsigned const int _width,unsigned int _height) {
 		gotoxy(cur_x,cur_y+count); // goto next line 
 		Sleep(ANI_SPEED);
 	}while(count<rect_height+1);
+
+	set_color(DEFAULT_FONT_COLOR,DEFAULT_BG_COLOR); // delete color
 }
 
 
@@ -62,9 +69,11 @@ void Start_wd::delete_rect_inside() {
 	cur_y++; 
 	gotoxy(cur_x,cur_y); // goto inside (x+1,y+1)
 
+	set_color(ANI_FONT_COLOR,BLACK); // delete bgcolor as BLACK
+	
 	do {
 		for(int i=0;i<rect_width-index-1;i++) {
-			set_color(DEFAULT_FONT_COLOR,BLACK); // delete bgcolor as BLACK
+			
 			putchar(' ');
 			Sleep(ANI_SPEED);
 		}
@@ -72,6 +81,8 @@ void Start_wd::delete_rect_inside() {
 		gotoxy(cur_x,cur_y+count); // goto next line 
 		Sleep(ANI_SPEED);
 	}while(count<rect_height-index-1); 
+	
+	set_color(DEFAULT_FONT_COLOR,DEFAULT_BG_COLOR);  // resetting as a default color
 }
 
 
@@ -110,6 +121,6 @@ void gotoxy(unsigned int _x,unsigned int _y) {
 	COORD Pos;
 	Pos.X=_x;
 	Pos.Y=_y;
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),Pos); 
 }
 

@@ -5,12 +5,19 @@
 
 #include <Windows.h>
 
-#define DEFAULT_BG_COLOR	      DARK_CYAN
-#define DEFAULT_FONT_COLOR		  WHITE
-#define DEFAULT_INPUT_FONT_COLOR  DARK_WHITE
-#define DEFAULT_INPUT_BG_COLOR	  RED
+#define DEFAULT_FONT_COLOR	  DARK_WHITE
+#define DEFAULT_BG_COLOR	  BLACK
 
-#define MATRIX_COLOR			  rand()%2
+#define ANI_FONT_COLOR		  WHITE
+#define ANI_BG_COLOR	      DARK_CYAN
+
+#define PASSWD_INTPUT_FONT_COLOR	  DARK_WHITE
+#define PASSWD_INPUT_BG_COLOR	      RED
+
+#define PASSWD_LABEL_FONT_COLOR WHITE
+#define PASSWD_LABEL_BG_COLOR   BLACK
+
+#define MATRIX_COLOR	      rand()%2
 
 typedef enum { // color range 0~15
 	BLACK = 0,

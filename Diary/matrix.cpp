@@ -12,9 +12,9 @@ Matrix::Matrix() {
 }
 
 
-void Matrix::clear_pos(int _x,int _y) {
-	_x<=0?Pos.X=0:Pos.X=_x-1;
-	_y<=0?Pos.Y=0:Pos.Y=_y-1;
+void Matrix::clear_pos(int _x,int _y) { // set position or clear position unless input
+	Pos.X=_x;
+	Pos.Y=_y;
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos); 
 }
 
@@ -55,7 +55,9 @@ int Matrix::return_pos_y() const {
 }
 
 Matrix::~Matrix() {
-	delete[] mark;
+	if(mark!=(char*)NULL) {
+		delete[] mark;
+	}
 }
 
 

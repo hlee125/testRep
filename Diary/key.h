@@ -7,10 +7,6 @@
 #define ENTER 13
 #define ESC	  27
 
-#define MATRIX_DEAD_LINE 35
-#define MATRIX_SIZE		 150
-
-#define MATRIX_SPEED	 10
 #define DEFAULT_SPEED	 10
 #define ANI_SPEED		 0.5
 
@@ -20,5 +16,6 @@
 
 #endif
 
-// color resetting
-// sucess ani
+// input color and black sperate
+// exit effect
+
