@@ -37,7 +37,7 @@ void Start_wd::draw_rect(unsigned const int _width,unsigned int _height) {
 	}while(count<rect_height-index);
 	index++;
 
-	set_color(DEFAULT_FONT_COLOR,DEFAULT_BG_COLOR); // delete color
+	delete_color(); // delete color
 }
 
 
@@ -58,7 +58,7 @@ void Start_wd::draw_reverse(unsigned const int _width,unsigned int _height) {
 		Sleep(ANI_SPEED);
 	}while(count<rect_height+1);
 
-	set_color(DEFAULT_FONT_COLOR,DEFAULT_BG_COLOR); // delete color
+	delete_color(); // delete color
 }
 
 
@@ -79,7 +79,12 @@ void Start_wd::delete_rect_inside() {
 		Sleep(ANI_SPEED);
 	}while(count<rect_height-index-1); 
 	
-	set_color(DEFAULT_FONT_COLOR,DEFAULT_BG_COLOR);  // resetting as a default color
+	delete_color(); // delete color
+}
+
+
+void Start_wd::delete_color() {
+	set_color(DEFAULT_FONT_COLOR,DEFAULT_BG_COLOR);
 }
 
 
@@ -118,6 +123,7 @@ void gotoxy(unsigned int _x,unsigned int _y) {
 	COORD Pos;
 	Pos.X=_x;
 	Pos.Y=_y;
+
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),Pos); 
 }
 

@@ -18,10 +18,12 @@ class Start_wd {
 public:
 	Start_wd();
 	void set_pos(unsigned int _x=0,unsigned int _y=0); 
-	void draw_rect(unsigned const int _width=0, unsigned const int _height=0); // draw rectangle width * height
+	void clear_pos();
+	void draw_rect(unsigned const int _width=0, unsigned const int _height=0);    // draw rectangle width * height
 	void draw_reverse(unsigned const int _width=0, unsigned const int _height=0);
 	void delete_rect_inside(); 
-	void clear_pos();
+	void delete_color();	// delete color
+
 
 	int return_cur_x() const;
 	int return_cur_y() const;

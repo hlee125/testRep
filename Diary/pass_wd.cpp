@@ -15,7 +15,7 @@ void Pass_wd::goto_pass_wd_label(const char* _print_label) {
 
 	set_color(PASSWD_LABEL_FONT_COLOR,PASSWD_LABEL_BG_COLOR); // color setting
 	cout<<print_label;										  // print "Passwd?"		
-	set_color(DEFAULT_FONT_COLOR,DEFAULT_BG_COLOR);			  // color delete
+	delete_color();											  // delete color
 }
 
 
@@ -27,13 +27,13 @@ void Pass_wd::goto_pass_wd_blank(const char* _print_blank) {
 
 	set_color(PASSWD_LABEL_FONT_COLOR,PASSWD_LABEL_BG_COLOR);   // setcolor '[' as WHITE 
 	putchar(print_blank[0]);								    // print '['
-	set_color(DEFAULT_FONT_COLOR,DEFAULT_BG_COLOR);			    // delete color
+	delete_color();												// delete color
 
 	for(int i=0;i<PASSWORD_SIZE;i++) putchar(print_blank[i+1]); // print "________"
 	
 	set_color(PASSWD_LABEL_FONT_COLOR,PASSWD_LABEL_BG_COLOR);   // setcolor ']' as WHITE 
 	putchar(print_blank[PASSWORD_SIZE+1]);					    // print ']'
-	set_color(DEFAULT_FONT_COLOR,DEFAULT_BG_COLOR);			    // delete color
+	delete_color();												// delete color
 }
 
 
@@ -54,7 +54,7 @@ void Pass_wd::matrix_pos() {
 		Sleep(MATRIX_SPEED);
 	}
 
-	set_color(DEFAULT_FONT_COLOR,DEFAULT_BG_COLOR); // resetting as default
+	delete_color(); // delete color
 }
 	
 
@@ -74,12 +74,12 @@ void Pass_wd::matrix_draw() {
 			srand((unsigned)GetTickCount());
 			set_color_matrix(MATRIX_COLOR,BLACK); // setting color for matrix	
 			
-			if(kbhit() && getch()==ESC) {
+			if(_kbhit() && _getch()==ESC) {
 				esc_checker=true;	
 				break; 
 			}
 			
-			if((kbhit() && getch()!=ESC) || (m[i].return_pos_y() == MATRIX_DEAD_LINE)){
+			if((_kbhit() && _getch()!=ESC) || (m[i].return_pos_y() == MATRIX_DEAD_LINE)){
 				system("cls"); 
 				matrix_pos_clear();
 				matrix_pos();
@@ -90,7 +90,7 @@ void Pass_wd::matrix_draw() {
 		}
 	}while(esc_checker==false);
 
-	set_color(DEFAULT_FONT_COLOR,DEFAULT_BG_COLOR); // resetting as default
+	delete_color(); // delete color
 }
 
 
@@ -113,10 +113,9 @@ void Pass_wd::sucess_ani() {
 			sucess[j].set_pos(move,j); cout<<' '; j++;
 			sucess[j].set_pos(del, j); cout<<' '; j++;
 		}while(j<MAX_LENGTH);//25
-		
 		Sleep(DEFAULT_SPEED);
 	}
-	set_color(DEFAULT_FONT_COLOR,DEFAULT_BG_COLOR);  // delete color
+	delete_color(); // delete color
 }
 
 
@@ -128,7 +127,7 @@ void Pass_wd::input_passwd(){
 	set_color(PASSWD_INTPUT_FONT_COLOR,PASSWD_INPUT_BG_COLOR); // setcolor
 
 	do {
-		temp_passwd[count]=getch();
+		temp_passwd[count]=_getch();
 
 		// when gets ESC, print nothing 
 		if(temp_passwd[count]!=ESC) cout<<'*';
@@ -169,7 +168,8 @@ void Pass_wd::input_passwd(){
 	} while(count<PASSWORD_SIZE);
 	
 	strcpy(passwd_val,temp_passwd);
-	set_color(DEFAULT_FONT_COLOR,DEFAULT_BG_COLOR);  // delete color
+	delete_color();	
+	// delete color
 }
 
 
