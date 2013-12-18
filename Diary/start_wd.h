@@ -22,6 +22,8 @@ public:
 	void draw_rect(unsigned const int _width=0, unsigned const int _height=0);    // draw rectangle width * height
 	void draw_reverse(unsigned const int _width=0, unsigned const int _height=0);
 	void delete_rect_inside(); 
+
+	virtual void set_color_wd(unsigned const int font_color=ANI_FONT_COLOR,unsigned const int bg_color=ANI_BG_COLOR); 
 	void delete_color();	// delete color
 
 

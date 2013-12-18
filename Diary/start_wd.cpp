@@ -24,19 +24,18 @@ void Start_wd::draw_rect(unsigned const int _width,unsigned int _height) {
 	rect_height = _height;
 	int count   = 0;
 	
-	set_color(ANI_FONT_COLOR,ANI_BG_COLOR); // draw bgcolor
+	set_color_wd();  // draw bgcolor
 
 	do {
-		for(int i=0;i<rect_width-index;i++) { 
-			putchar(' ');	
-			Sleep(ANI_SPEED);
+		for(int i=0;i<rect_width-index;i++) {
+			putchar(' ');
 		}
 		count++;
 		gotoxy(cur_x,cur_y+count);	// goto next line 
-		Sleep(ANI_SPEED);
-	}while(count<rect_height-index);
-	index++;
 
+	}while(count<rect_height-index);
+	
+	index++;
 	delete_color(); // delete color
 }
 
@@ -46,16 +45,16 @@ void Start_wd::draw_reverse(unsigned const int _width,unsigned int _height) {
 	rect_height = _height;
 	int count   = 0;
 
-	set_color(ANI_FONT_COLOR,ANI_BG_COLOR);  // draw bgcolor
+	Start_wd::set_color_wd();  // draw bgcolor
+	// without "Start_wd" Error 
 
 	do {
 		for(int i=0;i<rect_width+1;i++) { 
 			putchar(' ');	
-			Sleep(ANI_SPEED);
 		}
 		count++;
 		gotoxy(cur_x,cur_y+count);  // goto next line 
-		Sleep(ANI_SPEED);
+
 	}while(count<rect_height+1);
 
 	delete_color(); // delete color
@@ -65,21 +64,20 @@ void Start_wd::draw_reverse(unsigned const int _width,unsigned int _height) {
 void Start_wd::delete_rect_inside() {
 	int count=0;
 	gotoxy(cur_x+=1,cur_y+=1); // goto inside (x+1,y+1)
-
-	set_color(ANI_FONT_COLOR,BLACK); // delete bgcolor as BLACK
 	
 	do {
 		for(int i=0;i<rect_width-index-1;i++) {
-			
 			putchar(' ');
-			Sleep(ANI_SPEED);
 		}
 		count++;
 		gotoxy(cur_x,cur_y+count); // goto next line 
-		Sleep(ANI_SPEED);
+
 	}while(count<rect_height-index-1); 
-	
-	delete_color(); // delete color
+}
+
+
+void Start_wd::set_color_wd(unsigned const int font_color,unsigned const int bg_color) {
+	set_color(font_color,bg_color);
 }
 
 

@@ -10,7 +10,6 @@
 #define ESC	  27
 
 #define DEFAULT_SPEED	 10
-#define ANI_SPEED		 0.5
 
 #define LAST_LINE  24
 #define MAX_LENGTH 25

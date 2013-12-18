@@ -13,27 +13,26 @@ void Pass_wd::goto_pass_wd_label(const char* _print_label) {
 	strcpy(print_label,_print_label);
 	gotoxy(0,LAST_LINE); 
 
-	set_color(PASSWD_LABEL_FONT_COLOR,PASSWD_LABEL_BG_COLOR); // color setting
-	cout<<print_label;										  // print "Passwd?"		
-	delete_color();											  // delete color
+	set_color_wd();		 // color setting
+	cout<<print_label;   // print "Passwd?"		
+	delete_color();		 // delete color
 }
 
 
 void Pass_wd::goto_pass_wd_blank(const char* _print_blank) {
 	print_blank = new char[strlen(_print_blank)+1];
 	strcpy(print_blank,_print_blank);
-
 	gotoxy(0+strlen(print_label),LAST_LINE); 
 
-	set_color(PASSWD_LABEL_FONT_COLOR,PASSWD_LABEL_BG_COLOR);   // setcolor '[' as WHITE 
-	putchar(print_blank[0]);								    // print '['
-	delete_color();												// delete color
+	set_color_wd();				// setcolor '[' as WHITE 
+	putchar(print_blank[0]);	// print '['
+	delete_color();				// delete color
 
 	for(int i=0;i<PASSWORD_SIZE;i++) putchar(print_blank[i+1]); // print "________"
 	
-	set_color(PASSWD_LABEL_FONT_COLOR,PASSWD_LABEL_BG_COLOR);   // setcolor ']' as WHITE 
-	putchar(print_blank[PASSWORD_SIZE+1]);					    // print ']'
-	delete_color();												// delete color
+	set_color_wd();								 // setcolor ']' as WHITE 
+	putchar(print_blank[PASSWORD_SIZE+1]);		 // print ']'
+	delete_color();								 // delete color
 }
 
 
@@ -44,11 +43,16 @@ void Pass_wd::pass_wd_delete() {
 }
 
 
+void Pass_wd::set_color_wd(unsigned const int font_color,unsigned const int bg_color) {
+	set_color(font_color,bg_color);
+}
+
+
 void Pass_wd::matrix_pos() {
 	
 	for(int i=0;i<MATRIX_SIZE;i++) {
 		srand((unsigned)GetTickCount());
-		set_color_matrix(MATRIX_COLOR,BLACK);		// setting color for matrix	
+		set_color_matrix(MATRIX_COLOR,BLACK);  // setting color for matrix "test_clr.cpp"
 
 		m[i].rand_pickup_pos();
 		Sleep(MATRIX_SPEED);
@@ -72,7 +76,7 @@ void Pass_wd::matrix_draw() {
 	do{
 		for(int i=0;i<MATRIX_SIZE;i++) {
 			srand((unsigned)GetTickCount());
-			set_color_matrix(MATRIX_COLOR,BLACK); // setting color for matrix	
+			set_color_matrix(MATRIX_COLOR,BLACK); // setting color for matrix "test_clr.cpp"
 			
 			if(_kbhit() && _getch()==ESC) {
 				esc_checker=true;	
@@ -96,15 +100,15 @@ void Pass_wd::matrix_draw() {
 
 void Pass_wd::sucess_ani() {
 	int move = 0;
-	int del  = MAX_WIDTH - 1;				// -1 to delete last empty blank
+	int del  = MAX_WIDTH - 1;	// -1 to delete last empty blank
 
-	set_color(ANI_FONT_COLOR,ANI_BG_COLOR); // setting color
+	Start_wd::set_color_wd();	// setting color as "ANI_FONT_COLOR","ANI_BG_COLOR"
 
 	for(int i=0;i<MAX_WIDTH;i++,move++,del--) {
 		int j=0;
 
 		do{
-			if(j==LAST_LINE) { //24
+			if(j==LAST_LINE) {   // 24
 				sucess[j].set_pos(move,j);
 				cout<<' '; 
 				break;
@@ -112,7 +116,7 @@ void Pass_wd::sucess_ani() {
 
 			sucess[j].set_pos(move,j); cout<<' '; j++;
 			sucess[j].set_pos(del, j); cout<<' '; j++;
-		}while(j<MAX_LENGTH);//25
+		}while(j<MAX_LENGTH);  // 25
 		Sleep(DEFAULT_SPEED);
 	}
 	delete_color(); // delete color
@@ -124,7 +128,7 @@ void Pass_wd::input_passwd(){
 	int count=0;
 	gotoxy(0+strlen(print_label)+1,LAST_LINE);	// +1 to input [X______]	
 
-	set_color(PASSWD_INTPUT_FONT_COLOR,PASSWD_INPUT_BG_COLOR); // setcolor
+	set_color_wd(PASSWD_INTPUT_FONT_COLOR,PASSWD_INPUT_BG_COLOR); // setcolor
 
 	do {
 		temp_passwd[count]=_getch();
@@ -147,6 +151,7 @@ void Pass_wd::input_passwd(){
 				exit_window.set_pos(temp_cur_x--,temp_cur_y--);
 				exit_window.draw_reverse(temp_width,temp_height);
 				exit_window.delete_rect_inside(); 
+
 				Sleep(DEFAULT_SPEED);
 				if(exit_window.return_cur_x() == 2 || exit_window.return_cur_y() == 2 ) break; 
 			}
@@ -168,8 +173,7 @@ void Pass_wd::input_passwd(){
 	} while(count<PASSWORD_SIZE);
 	
 	strcpy(passwd_val,temp_passwd);
-	delete_color();	
-	// delete color
+	delete_color(); // delete color
 }
 
 
@@ -214,5 +218,4 @@ Pass_wd::~Pass_wd() {
 	if(print_label!=(char*)NULL) {
 		delete[] print_label;
 	}
-
 }
