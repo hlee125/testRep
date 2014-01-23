@@ -23,7 +23,7 @@ int main() {
 			srand((unsigned)GetTickCount());
 			set_color(rand()%COLOR_SIZE,0);	
 			
-			if((kbhit() && getch()!=ESC) || (m[i].return_pos_y() == DEAD_LINE) ){
+			if(( _kbhit() && _getch()!=ESC) || (m[i].return_pos_y() == DEAD_LINE) ){
 				system("cls"); 
 
 				for(int i=0;i<SIZE;i++) {
@@ -38,7 +38,7 @@ int main() {
 
 			m[i].draw_vert();
 			Sleep(SPEED);
-			if(kbhit() && getch()==ESC) exit(-1); // good example to exit
+			if( _kbhit() && _getch()==ESC) exit(-1); // good example to exit
 		}
 	}while(true);
 	

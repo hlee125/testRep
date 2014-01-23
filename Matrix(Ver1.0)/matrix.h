@@ -3,6 +3,8 @@
 #ifndef _MATRIX_H_
 #define _MATRIX_H_
 
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <windows.h> // COORD	
 #include <cstdlib>	 // srand() , GetTickCount()
 #include <iostream>
